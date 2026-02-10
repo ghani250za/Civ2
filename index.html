@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Révolution Française : Niveau Examen</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fdf2e9; text-align: center; padding: 10px; color: #2c3e50; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 25px rgba(0,0,0,0.1); border-top: 6px solid #c0392b; }
+        
+        h1 { color: #c0392b; margin-bottom: 5px; font-size: 1.8em; }
+        h3 { color: #7f8c8d; font-size: 1em; margin-top: 0; }
+        
+        /* Menu Styles */
+        .menu-btn { display: block; width: 100%; padding: 20px; margin: 15px 0; font-size: 1.1em; border: 2px solid #e74c3c; background: white; border-radius: 12px; cursor: pointer; transition: all 0.3s; color: #c0392b; font-weight: bold; position: relative; overflow: hidden; }
+        .menu-btn:hover { background: #c0392b; color: white; transform: translateY(-3px); }
+        .menu-desc { font-size: 0.85em; color: #7f8c8d; font-weight: normal; display: block; margin-top: 5px; }
+
+        /* Game Styles */
+        .score-board { font-size: 1.2em; color: #27ae60; font-weight: bold; margin: 15px 0; background: #e8f8f5; padding: 10px 20px; border-radius: 50px; display: inline-block; }
+        .question-box { background: #fcebe1; padding: 20px; border-radius: 12px; margin: 20px 0; text-align: center; border-bottom: 4px solid #c0392b; }
+        .q-fr { font-size: 1.15em; font-weight: bold; color: #2c3e50; display: block; margin-bottom: 8px; }
+        .q-ar { font-size: 1.05em; color: #555; font-family: 'Amiri', sans-serif; direction: rtl; display: block; }
+        
+        .options { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        
+        button.opt-btn { padding: 15px; border: 2px solid #edeff1; border-radius: 12px; cursor: pointer; background: white; transition: all 0.2s; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80px; width: 100%; }
+        button.opt-btn:hover { background: #fdf2e9; border-color: #e67e22; transform: translateY(-2px); }
+        
+        .opt-fr { font-weight: bold; font-size: 0.95em; color: #2c3e50; }
+        .opt-ar { font-size: 0.9em; color: #666; font-family: 'Amiri', sans-serif; margin-top: 4px; direction: rtl;}
+        
+        button.correct { background: #d4edda; border-color: #28a745; }
+        button.correct .opt-fr { color: #155724; }
+        button.wrong { background: #f8d7da; border-color: #dc3545; opacity: 0.8; }
+        
+        .hidden { display: none; }
+        #feedback { margin-top: 20px; font-weight: bold; font-size: 1.3em; }
+        .explanation { font-size: 0.95em; color: #444; margin-top: 15px; background: #fff3cd; padding: 15px; border-radius: 8px; border-left: 5px solid #ffc107; text-align: left; }
+        .exp-ar { display: block; margin-top: 5px; color: #666; direction: rtl; text-align: right; }
+        
+        #next-btn, #home-btn { margin-top: 20px; padding: 15px; background: #c0392b; color: white; border: none; font-size: 1.1em; border-radius: 8px; cursor: pointer; width: 100%; font-weight: bold; }
+        #next-btn:hover { background: #a93226; }
+        
+        .progress-container { width: 100%; background-color: #eee; border-radius: 10px; height: 8px; margin-bottom: 20px; overflow: hidden; }
+        .progress-bar { height: 100%; background-color: #c0392b; width: 0%; transition: width 0.4s; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🇫🇷 Révolution Française</h1>
+    <h3>Examen Blanc | أسئلة مستوى الامتحان</h3>
+
+    <div id="main-menu">
+        <button class="menu-btn" onclick="startGame(1)">
+            📝 Partie 1 : 1789 - 1790
+            <span class="menu-desc">Crise, États Généraux, Bastille, Réformes<br>من الأزمة إلى الإصلاحات الإدارية</span>
+        </button>
+        <button class="menu-btn" onclick="startGame(2)">
+            ⚔️ Partie 2 : 1791 - 1795
+            <span class="menu-desc">Fuite du Roi, Guerre, Terreur, Directoire<br>هروب الملك، الحرب، الإرهاب، والإدارة</span>
+        </button>
+        <button class="menu-btn" style="border-color:#2980b9; color:#2980b9;" onclick="startGame(3)">
+            🔥 Tout le programme (22 Questions)
+            <span class="menu-desc">Révision complète et intensive<br>مراجعة شاملة لكل المقرر</span>
+        </button>
+    </div>
+    
+    <div id="game-area" class="hidden">
+        <div class="progress-container"><div class="progress-bar" id="progress"></div></div>
+        <div class="score-board">Score: <span id="score">0</span></div>
+        
+        <div class="question-box">
+            <span id="q-icon" style="font-size: 2.5em; display:block; margin-bottom:10px;"></span>
+            <span id="q-fr" class="q-fr">Question FR</span>
+            <span id="q-ar" class="q-ar">سؤال AR</span>
+        </div>
+        
+        <div class="options" id="options-container"></div>
+        
+        <div id="feedback"></div>
+        <div id="explanation" class="explanation hidden">
+            <strong id="exp-fr"></strong>
+            <span id="exp-ar" class="exp-ar"></span>
+        </div>
+        
+        <button id="next-btn" class="hidden" onclick="nextQuestion()">Suivant ➡️</button>
+    </div>
+
+    <div id="result-area" class="hidden">
+        <h2>🎉 Fin de l'examen / انتهى الامتحان</h2>
+        <h3 id="final-msg" style="color:#c0392b; font-size: 1.5em;"></h3>
+        <p id="advice-msg" style="color:#555;"></p>
+        <button id="home-btn" onclick="location.reload()">🏠 Retour au Menu / القائمة</button>
+    </div>
+</div>
+
+<script>
+    let currentQuestions = [];
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    // ==========================================
+    // 🔴 الأسئلة المحدثة (خيارات صعبة ومنطقية)
+    // ==========================================
+    
+    // أسئلة الجزء 1
+    const questions_p1 = [
+        { 
+            icon: "🗺️",
+            q_fr: "Que symbolise la 'Carte de l'ancienne France' avant 1789 ?", 
+            q_ar: "ماذا تمثل خريطة فرنسا القديمة (قبل 1789)؟",
+            options: [
+                { fr: "L'unité nationale et la centralisation", ar: "الوحدة الوطنية والمركزية" },
+                { fr: "Le chaos administratif et l'inégalité fiscale", ar: "الفوضى الإدارية واللاعدالة الضريبية" }, // Correct
+                { fr: "La division religieuse entre catholiques et protestants", ar: "الانقسام الديني بين الكاثوليك والبروتستانت" }
+            ], 
+            answer: 1, 
+            exp_fr: "La France était un assemblage confus de lois et d'impôts différents (Privilèges).",
+            exp_ar: "كانت القوانين والضرائب تختلف من منطقة لأخرى مما خلق فوضى وعدم مساواة."
+        },
+        { 
+            icon: "🔺",
+            q_fr: "Quelle est la caractéristique principale du 'Tiers État' ?", 
+            q_ar: "ما هي الميزة الأساسية للطبقة الثالثة (Tiers État)؟",
+            options: [
+                { fr: "Ils possèdent les terres mais ne paient pas d'impôts", ar: "يملكون الأراضي ولا يدفعون الضرائب" },
+                { fr: "Ils représentent 98% de la population et paient tous les impôts", ar: "يمثلون 98% ويدفعون كل الضرائب" }, // Correct
+                { fr: "Ils sont composés uniquement des paysans pauvres", ar: "تتكون فقط من الفلاحين الفقراء" } // Piège: Non, il y a aussi les Bourgeois
+            ], 
+            answer: 1, 
+            exp_fr: "Le Tiers État inclut les paysans ET la bourgeoisie riche, qui paient pour tout le monde.",
+            exp_ar: "الطبقة الثالثة تشمل الفلاحين والبرجوازية (الأغنياء)، وهم من يتحملون عبء الضرائب."
+        },
+        { 
+            icon: "🌾",
+            q_fr: "Quel a été l'impact politique de la hausse du 'Prix du blé' (1788-1789) ?", 
+            q_ar: "ما هو الأثر السياسي لارتفاع سعر القمح (1788-1789)؟",
+            options: [
+                { fr: "L'enrichissement des paysans grâce à la vente", ar: "ثراء الفلاحين بفضل المبيعات" },
+                { fr: "Une réforme agraire proposée par le Roi", ar: "إصلاح زراعي اقترحه الملك" },
+                { fr: "La transformation d'une crise économique en révolte sociale", ar: "تحول الأزمة الاقتصادية إلى ثورة اجتماعية" } // Correct
+            ], 
+            answer: 2, 
+            exp_fr: "La famine (disette) a poussé le peuple à bout, déclenchant les émeutes.",
+            exp_ar: "المجاعة هي التي دفعت الشعب للغضب وحولت الأزمة إلى ثورة."
+        },
+        { 
+            icon: "🗳️",
+            q_fr: "Pourquoi les 'États Généraux' se sont-ils bloqués dès le début ?", 
+            q_ar: "لماذا تعطل مجلس الطبقات منذ البداية؟",
+            options: [
+                { fr: "À cause du désaccord sur le mode de scrutin (Tête vs Ordre)", ar: "بسبب الخلاف حول طريقة التصويت (بالرأس أم بالطبقة)" }, // Correct
+                { fr: "Le Roi a refusé d'ouvrir la séance", ar: "رفض الملك افتتاح الجلسة" },
+                { fr: "Le Tiers État a refusé de payer les impôts", ar: "رفضت الطبقة الثالثة دفع الضرائب" }
+            ], 
+            answer: 0, 
+            exp_fr: "Le vote 'par ordre' désavantageait le Tiers État, qui voulait un vote 'par tête'.",
+            exp_ar: "التصويت بالطبقة يعني خسارة الطبقة الثالثة (2 ضد 1)، لذا طالبوا بالتصويت بالرأس."
+        },
+        { 
+            icon: "✋",
+            q_fr: "Quel est l'engagement pris lors du 'Serment du Jeu de Paume' ?", 
+            q_ar: "ما هو الالتزام الذي تم في 'قسم لعبة الكف'؟",
+            options: [
+                { fr: "Renverser la monarchie immédiatement", ar: "إسقاط الملكية فوراً" }, // Piège: Pas encore
+                { fr: "Ne pas se séparer avant d'avoir rédigé une Constitution", ar: "عدم التفرق قبل كتابة دستور" }, // Correct
+                { fr: "Déclarer la guerre à l'Angleterre", ar: "إعلان الحرب على إنجلترا" }
+            ], 
+            answer: 1, 
+            exp_fr: "Ils voulaient limiter les pouvoirs du Roi par une loi suprême (Constitution).",
+            exp_ar: "هدفهم كان تقييد سلطة الملك بقانون (دستور) وليس قتله في تلك المرحلة."
+        },
+        { 
+            icon: "🏰",
+            q_fr: "Pourquoi la 'Prise de la Bastille' est-elle symbolique ?", 
+            q_ar: "لماذا يعتبر 'اقتحام الباستيل' حدثاً رمزياً؟",
+            options: [
+                { fr: "C'était une prison pour les dettes financières", ar: "كان سجناً للديون المالية" },
+                { fr: "C'était le symbole de l'arbitraire royal (Lettres de cachet)", ar: "كان رمزاً للاستبداد الملكي (الاعتقال دون محاكمة)" }, // Correct
+                { fr: "C'était la réserve d'armes la plus importante", ar: "كان أكبر مخزن للأسلحة" } // Piège: Ils cherchaient de la poudre, mais le symbole est l'arbitraire
+            ], 
+            answer: 1, 
+            exp_fr: "La Bastille représentait le pouvoir du Roi d'emprisonner qui il voulait.",
+            exp_ar: "الباستيل يمثل قدرة الملك على سجن أي شخص دون سبب قانوني."
+        },
+        { 
+            icon: "🔥",
+            q_fr: "Contre qui était dirigée la 'Grande Peur' dans les campagnes ?", 
+            q_ar: "ضد من كان تمرد 'الخوف الكبير' في الأرياف موجهاً؟",
+            options: [
+                { fr: "Contre les armées étrangères", ar: "ضد الجيوش الأجنبية" },
+                { fr: "Contre les représentants du Tiers État", ar: "ضد ممثلي الطبقة الثالثة" },
+                { fr: "Contre les seigneurs et les registres féodaux", ar: "ضد الإقطاعيين وسجلات الديون" } // Correct
+            ], 
+            answer: 2, 
+            exp_fr: "Les paysans voulaient détruire les preuves de leurs dettes envers les nobles.",
+            exp_ar: "أحرق الفلاحون السجلات التي تثبت ديونهم وعبوديتهم للنبلاء."
+        },
+        { 
+            icon: "📜",
+            q_fr: "Que change la 'Déclaration des droits de l'homme' (1789) ?", 
+            q_ar: "ما التغيير الذي أحدثه 'إعلان حقوق الإنسان' (1789)؟",
+            options: [
+                { fr: "La souveraineté passe du Roi à la Nation", ar: "انتقال السيادة من الملك إلى الأمة" }, // Correct
+                { fr: "L'abolition de la monarchie", ar: "إلغاء الملكية تماماً" }, // Piège: Le roi est resté
+                { fr: "L'égalité économique totale entre les citoyens", ar: "المساواة الاقتصادية التامة بين المواطنين" } // Piège: Égalité en DROITS, pas en argent
+            ], 
+            answer: 0, 
+            exp_fr: "Le Roi n'est plus propriétaire du pouvoir, c'est la Nation qui décide.",
+            exp_ar: "لم يعد الملك مصدر السلطة، بل الشعب (الأمة)، لكن الملك بقي في منصبه."
+        },
+        { 
+            icon: "🗺️",
+            q_fr: "Quel était l'objectif de la création des 'Départements' en 1790 ?", 
+            q_ar: "ما الهدف من إنشاء 'الأقاليم' (Départements) عام 1790؟",
+            options: [
+                { fr: "Renforcer le pouvoir des nobles locaux", ar: "تعزيز سلطة النبلاء المحليين" },
+                { fr: "Rationaliser et unifier l'administration du territoire", ar: "عقلنة وتوحيد إدارة الأراضي" }, // Correct
+                { fr: "Préparer la guerre civile", ar: "التحضير للحرب الأهلية" }
+            ], 
+            answer: 1, 
+            exp_fr: "Remplacer les vieilles provinces inégales par un découpage géométrique et égal.",
+            exp_ar: "استبدال المقاطعات القديمة بتقسيم هندسي متساوٍ لتوحيد الإدارة."
+        },
+        { 
+            icon: "⛪",
+            q_fr: "La Fête de la Fédération (14 juillet 1790) symbolise :", 
+            q_ar: "عيد الفيدرالية (14 جويلية 1790) يرمز إلى:",
+            options: [
+                { fr: "La victoire finale de la Révolution", ar: "الانتصار النهائي للثورة" },
+                { fr: "Une réconciliation apparente entre le Roi et la Nation", ar: "مصالحة ظاهرية بين الملك والأمة" }, // Correct
+                { fr: "Le début de la Terreur", ar: "بداية عهد الإرهاب" }
+            ], 
+            answer: 1, 
+            exp_fr: "C'était un moment d'unité (illusoire) où le Roi a juré fidélité à la Constitution.",
+            exp_ar: "كانت لحظة وحدة وطنية حيث أقسم الملك بالولاء للدستور (قبل أن يهرب لاحقاً)."
+        }
+    ];
+
+    // أسئلة الجزء 2
+    const questions_p2 = [
+        { 
+            icon: "✝️",
+            q_fr: "Pourquoi la 'Constitution civile du clergé' a-t-elle divisé la France ?", 
+            q_ar: "لماذا تسبب 'الدستور المدني لرجال الدين' في تقسيم فرنسا؟",
+            options: [
+                { fr: "Elle a forcé les prêtres à choisir entre la fidélité au Pape ou à l'État", ar: "أجبرت الكهنة على الاختيار بين ولاء البابا أو الدولة" }, // Correct
+                { fr: "Elle a interdit la religion catholique", ar: "منعت الديانة الكاثوليكية" }, // Piège: Faux
+                { fr: "Elle a donné trop de pouvoir au Pape", ar: "أعطت سلطة كبيرة للبابا" }
+            ], 
+            answer: 0, 
+            exp_fr: "Les prêtres réfractaires (fidèles au Pape) sont devenus des ennemis de la Révolution.",
+            exp_ar: "خلق هذا القرار شرخاً بين 'المؤيدين للدستور' و'الرافضين' (الموالين للبابا)."
+        },
+        { 
+            icon: "🍞",
+            q_fr: "Quel est le résultat politique de la 'Marche des femmes' sur Versailles ?", 
+            q_ar: "ما هي النتيجة السياسية لمسيرة النساء إلى فرساي؟",
+            options: [
+                { fr: "Le Roi a abdiqué", ar: "تنازل الملك عن العرش" },
+                { fr: "Le Roi est ramené à Paris sous le contrôle du peuple", ar: "إحضار الملك لباريس تحت رقابة الشعب" }, // Correct
+                { fr: "Les femmes ont obtenu le droit de vote", ar: "حصلت النساء على حق التصويت" } // Piège: Faux
+            ], 
+            answer: 1, 
+            exp_fr: "Le Roi ne peut plus comploter tranquillement à Versailles.",
+            exp_ar: "بنقل الملك إلى باريس، أصبح 'رهينة' سياسية تحت ضغط الشارع."
+        },
+        { 
+            icon: "🏃",
+            q_fr: "L'arrestation du Roi à Varennes (1791) a provoqué :", 
+            q_ar: "أدى القبض على الملك في فارين (1791) إلى:",
+            options: [
+                { fr: "La rupture de confiance et la montée de l'idée républicaine", ar: "انكسار الثقة وصعود الفكرة الجمهورية" }, // Correct
+                { fr: "Un renforcement de l'amour pour le Roi", ar: "زيادة حب الشعب للملك" },
+                { fr: "La fin immédiate de la guerre", ar: "نهاية الحرب فوراً" }
+            ], 
+            answer: 0, 
+            exp_fr: "Le peuple a vu que le Roi essayait de fuir pour rejoindre les ennemis.",
+            exp_ar: "أدرك الشعب أن الملك خائن ويريد الانضمام للأعداء، فسقطت هيبته."
+        },
+        { 
+            icon: "⚔️",
+            q_fr: "Le 10 août 1792 (Prise des Tuileries) marque :", 
+            q_ar: "يمثل تاريخ 10 أوت 1792 (اقتحام التويلري):",
+            options: [
+                { fr: "La simple adoption d'une nouvelle loi", ar: "مجرد اعتماد قانون جديد" },
+                { fr: "La chute de la Monarchie constitutionnelle", ar: "سقوط الملكية الدستورية" }, // Correct
+                { fr: "L'exécution immédiate de Louis XVI", ar: "إعدام لويس 16 فوراً" } // Piège: Il a été emprisonné, exécuté plus tard
+            ], 
+            answer: 1, 
+            exp_fr: "C'est la fin de plus de 1000 ans de monarchie en France.",
+            exp_ar: "هذا هو اليوم الذي انتهت فيه الملكية فعلياً وبدأت الجمهورية."
+        },
+        { 
+            icon: "🩸",
+            q_fr: "Quelle conséquence a eu l'exécution de Louis XVI sur l'Europe ?", 
+            q_ar: "ما نتيجة إعدام لويس السادس عشر على أوروبا؟",
+            options: [
+                { fr: "Les rois européens ont signé la paix", ar: "وقع ملوك أوروبا اتفاق سلام" },
+                { fr: "La formation d'une coalition générale contre la France", ar: "تشكيل تحالف عام ضد فرنسا" }, // Correct
+                { fr: "L'indifférence totale", ar: "اللامبالاة التامة" }
+            ], 
+            answer: 1, 
+            exp_fr: "Les rois d'Europe ont eu peur et ont attaqué la France pour stopper la contagion.",
+            exp_ar: "شعر ملوك أوروبا بالرعب واتحدوا جميعاً للقضاء على الثورة الفرنسية."
+        },
+        { 
+            icon: "⚠️",
+            q_fr: "Pourquoi a-t-on instauré la 'Terreur' en 1793 ?", 
+            q_ar: "لماذا تم فرض 'نظام الإرهاب' عام 1793؟",
+            options: [
+                { fr: "Parce que Robespierre était fou", ar: "لأن روبسبير كان مجنوناً" },
+                { fr: "Pour faire face au double péril : invasion extérieure et révoltes intérieures", ar: "لمواجهة الخطر المزدوج: الغزو الخارجي والتمرد الداخلي" }, // Correct
+                { fr: "Pour éliminer la noblesse uniquement", ar: "للقضاء على النبلاء فقط" }
+            ], 
+            answer: 1, 
+            exp_fr: "C'était une mesure d'urgence : 'La Patrie en danger'.",
+            exp_ar: "كانت حالة طوارئ قصوى لإنقاذ الجمهورية من السقوط."
+        },
+        { 
+            icon: "⚖️",
+            q_fr: "Quel rôle jouait le 'Comité de Salut Public' dirigé par Robespierre ?", 
+            q_ar: "ما الدور الذي لعبته 'لجنة السلامة العامة' بقيادة روبسبير؟",
+            options: [
+                { fr: "Un rôle consultatif sans pouvoir", ar: "دور استشاري بلا سلطة" },
+                { fr: "Un gouvernement dictatorial pour diriger la guerre", ar: "حكومة دكتاتورية لإدارة الحرب" }, // Correct
+                { fr: "S'occuper uniquement de l'économie", ar: "الاهتمام بالاقتصاد فقط" }
+            ], 
+            answer: 1, 
+            exp_fr: "Il concentrait tous les pouvoirs pour être efficace.",
+            exp_ar: "كانت الحكومة الفعلية التي تملك كل الصلاحيات لاتخاذ قرارات سريعة."
+        },
+        { 
+            icon: "📢",
+            q_fr: "La 'Levée en masse' a permis de créer :", 
+            q_ar: "سمح 'التجنيد العام' بإنشاء:",
+            options: [
+                { fr: "Une petite armée professionnelle", ar: "جيش احترافي صغير" },
+                { fr: "Une armée nationale de citoyens-soldats", ar: "جيش وطني من المواطنين الجنود" }, // Correct
+                { fr: "Une milice privée pour les bourgeois", ar: "ميليشيا خاصة للبرجوازية" }
+            ], 
+            answer: 1, 
+            exp_fr: "C'est la naissance de l'armée nationale moderne.",
+            exp_ar: "تحول الجيش من مرتزقة إلى مواطنين يدافعون عن وطنهم."
+        },
+        { 
+            icon: "📉",
+            q_fr: "La chute de Robespierre (Thermidor 1794) signifie :", 
+            q_ar: "سقوط روبسبير (تيرميدور 1794) يعني:",
+            options: [
+                { fr: "La fin de la Révolution", ar: "نهاية الثورة" },
+                { fr: "La fin de la Terreur et le retour des bourgeois au pouvoir", ar: "نهاية الإرهاب وعودة البرجوازية للسلطة" }, // Correct
+                { fr: "Le retour de la Monarchie", ar: "عودة الملكية" }
+            ], 
+            answer: 1, 
+            exp_fr: "Les excès de la Terreur ont effrayé les députés qui ont éliminé Robespierre.",
+            exp_ar: "انتهى التشدد الثوري وعادت السلطة للطبقة المعتدلة (والفاسدة أحياناً)."
+        },
+        { 
+            icon: "🏛️",
+            q_fr: "Comment peut-on décrire le régime du 'Directoire' (1795) ?", 
+            q_ar: "كيف يمكن وصف نظام 'حكومة الإدارة' (1795)؟",
+            options: [
+                { fr: "Un régime fort et militaire (Napoléon)", ar: "نظام قوي وعسكري (نابليون)" }, // Piège: C'est après
+                { fr: "Un régime faible, instable et corrompu", ar: "نظام ضعيف، غير مستقر وفاسد" }, // Correct
+                { fr: "Une démocratie parfaite", ar: "ديمقراطية مثالية" }
+            ], 
+            answer: 1, 
+            exp_fr: "La peur de la dictature a créé un pouvoir trop divisé (5 directeurs).",
+            exp_ar: "خوفاً من دكتاتورية جديدة (مثل روبسبير)، قسموا السلطة مما أضعف الدولة."
+        }
+    ];
+
+    // ==========================================
+    // ⚙️ منطق اللعبة
+    // ==========================================
+
+    function startGame(mode) {
+        if (mode === 1) {
+            currentQuestions = questions_p1;
+        } else if (mode === 2) {
+            currentQuestions = questions_p2;
+        } else {
+            // دمج الجزأين للمراجعة الشاملة
+            currentQuestions = questions_p1.concat(questions_p2);
+        }
+        
+        currentQuestionIndex = 0;
+        score = 0;
+        
+        document.getElementById("main-menu").classList.add("hidden");
+        document.getElementById("game-area").classList.remove("hidden");
+        document.getElementById("result-area").classList.add("hidden");
+        
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const q = currentQuestions[currentQuestionIndex];
+        
+        document.getElementById("q-icon").innerText = q.icon;
+        document.getElementById("q-fr").innerText = q.q_fr;
+        document.getElementById("q-ar").innerText = q.q_ar;
+        
+        const optionsDiv = document.getElementById("options-container");
+        optionsDiv.innerHTML = "";
+        
+        document.getElementById("feedback").innerText = "";
+        document.getElementById("explanation").classList.add("hidden");
+        document.getElementById("next-btn").classList.add("hidden");
+
+        // Progress Bar
+        let progressPercent = (currentQuestionIndex / currentQuestions.length) * 100;
+        document.getElementById("progress").style.width = progressPercent + "%";
+
+        q.options.forEach((opt, index) => {
+            const btn = document.createElement("button");
+            btn.className = "opt-btn";
+            btn.innerHTML = `<span class="opt-fr">${opt.fr}</span><span class="opt-ar">${opt.ar}</span>`;
+            btn.onclick = () => checkAnswer(index, btn);
+            optionsDiv.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedIndex, btnElement) {
+        const q = currentQuestions[currentQuestionIndex];
+        const buttons = document.querySelectorAll(".options button");
+        
+        buttons.forEach(b => b.disabled = true);
+
+        if (selectedIndex === q.answer) {
+            btnElement.classList.add("correct");
+            document.getElementById("feedback").innerHTML = "<span style='color:#27ae60'>Excellent ! ✅ ممتاز</span>";
+            score++;
+            document.getElementById("score").innerText = score;
+        } else {
+            btnElement.classList.add("wrong");
+            buttons[q.answer].classList.add("correct");
+            document.getElementById("feedback").innerHTML = "<span style='color:#c0392b'>Erreur ❌ خطأ</span>";
+        }
+        
+        document.getElementById("exp-fr").innerText = q.exp_fr;
+        document.getElementById("exp-ar").innerText = q.exp_ar;
+        document.getElementById("explanation").classList.remove("hidden");
+        document.getElementById("next-btn").classList.remove("hidden");
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < currentQuestions.length) {
+            loadQuestion();
+        } else {
+            document.getElementById("game-area").classList.add("hidden");
+            document.getElementById("result-area").classList.remove("hidden");
+            document.getElementById("progress").style.width = "100%";
+            
+            let percentage = (score / currentQuestions.length) * 100;
+            let msg = "";
+            let advice = "";
+            
+            if(percentage === 100) {
+                msg = "20/20 - Parfait ! 🌟";
+                advice = "أنت مستعد تماماً للامتحان. معلوماتك دقيقة جداً.";
+            } else if(percentage >= 75) {
+                msg = "Très Bien ! 👏";
+                advice = "مستوى ممتاز، راجع فقط الأخطاء القليلة التي وقعت فيها.";
+            } else if(percentage >= 50) {
+                msg = "Bien, mais attention aux pièges ! 🤔";
+                advice = "لديك المعلومات الأساسية، لكن انتبه للتفاصيل الدقيقة والخيارات المتشابهة.";
+            } else {
+                msg = "Révision insuffisante 📚";
+                advice = "يجب عليك إعادة مراجعة الملخص، الأسئلة دقيقة وتحتاج لتركيز.";
+            }
+            
+            document.getElementById("final-msg").innerText = `${score} / ${currentQuestions.length}\n${msg}`;
+            document.getElementById("advice-msg").innerText = advice;
+        }
+    }
+</script>
+
+</body>
+</html>
