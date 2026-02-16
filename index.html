@@ -2,7 +2,7 @@
 <html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Projet d'Histoire : La Révolution Française</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Cairo:wght@400;600;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -29,6 +29,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            box-sizing: border-box;
         }
         
         /* تأثير الزجاج الفاخر للحاوية الرئيسية */
@@ -43,6 +44,7 @@
             backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
+            box-sizing: border-box;
         }
 
         /* شريط علوي تزييني بألوان علم فرنسا */
@@ -59,6 +61,7 @@
             font-size: 2.8em; 
             margin-bottom: 5px; 
             letter-spacing: 1px;
+            line-height: 1.2;
         }
         
         .subtitle { 
@@ -86,6 +89,7 @@
             font-family: 'Cinzel', serif;
             font-weight: bold;
             position: relative;
+            box-sizing: border-box;
         }
         .menu-btn:hover { 
             background: var(--gold); 
@@ -114,6 +118,7 @@
             margin-bottom: 30px; 
             font-family: 'Cairo', sans-serif;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-sizing: border-box;
         }
         .stat-item { font-size: 1.4em; font-weight: bold; }
         .stat-label { font-size: 0.7em; opacity: 0.8; display: block; text-transform: uppercase; letter-spacing: 2px;}
@@ -125,15 +130,16 @@
             border-radius: 15px; 
             margin-bottom: 25px; 
             border-left: 6px solid var(--gold);
+            box-sizing: border-box;
         }
-        .q-fr { font-size: 1.4em; font-weight: bold; color: var(--royal-blue); display: block; margin-bottom: 15px; }
-        .q-ar { font-size: 1.25em; color: #444; font-family: 'Cairo', sans-serif; direction: rtl; display: block; }
+        .q-fr { font-size: 1.4em; font-weight: bold; color: var(--royal-blue); display: block; margin-bottom: 15px; line-height: 1.4;}
+        .q-ar { font-size: 1.25em; color: #444; font-family: 'Cairo', sans-serif; direction: rtl; display: block; line-height: 1.5;}
 
         /* خيارات الإجابات */
         .options { display: grid; grid-template-columns: 1fr; gap: 15px; }
         
         button.opt-btn { 
-            padding: 20px; 
+            padding: 20px 50px 20px 20px; /* مساحة إضافية على اليمين للأيقونة */
             border: 1px solid #ddd; 
             border-radius: 12px; 
             cursor: pointer; 
@@ -145,6 +151,8 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            box-sizing: border-box;
+            width: 100%;
         }
         button.opt-btn:hover:not(:disabled) { 
             border-color: var(--french-blue); 
@@ -152,14 +160,14 @@
             transform: scale(1.01);
         }
         
-        .opt-fr { font-weight: 600; font-size: 1.1em; color: var(--royal-blue); font-family: 'Lora', serif;}
-        .opt-ar { font-size: 1em; color: #666; font-family: 'Cairo', sans-serif; margin-top: 8px; direction: rtl; text-align: right; width: 100%;}
+        .opt-fr { font-weight: 600; font-size: 1.1em; color: var(--royal-blue); font-family: 'Lora', serif; line-height: 1.4;}
+        .opt-ar { font-size: 1em; color: #666; font-family: 'Cairo', sans-serif; margin-top: 8px; direction: rtl; text-align: right; width: 100%; line-height: 1.4;}
         
         /* تأثيرات الإجابة الصحيحة والخاطئة */
         button.correct { background: #e8f8f5; border: 2px solid #27ae60; }
-        button.correct::after { content: '\f00c'; font-family: 'FontAwesome'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: #27ae60; font-size: 1.5em; }
+        button.correct::after { content: '\f00c'; font-family: 'FontAwesome'; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #27ae60; font-size: 1.5em; }
         button.wrong { background: #fdedec; border: 2px solid #e74c3c; opacity: 0.7; }
-        button.wrong::after { content: '\f00d'; font-family: 'FontAwesome'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: #e74c3c; font-size: 1.5em; }
+        button.wrong::after { content: '\f00d'; font-family: 'FontAwesome'; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: #e74c3c; font-size: 1.5em; }
         
         .hidden { display: none !important; }
         
@@ -175,8 +183,9 @@
             text-align: left; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             animation: fadeIn 0.5s ease;
+            box-sizing: border-box;
         }
-        .exp-fr { display: block; margin-bottom: 10px; font-weight: bold; color: var(--french-blue); }
+        .exp-fr { display: block; margin-bottom: 10px; font-weight: bold; color: var(--french-blue); line-height: 1.4;}
         .exp-ar { display: block; margin-top: 10px; color: #555; direction: rtl; text-align: right; font-family: 'Cairo', sans-serif; line-height: 1.6; }
         
         /* زر المتابعة */
@@ -193,6 +202,8 @@
             font-weight: bold; 
             transition: all 0.3s;
             box-shadow: 0 5px 15px rgba(26, 37, 48, 0.4);
+            width: 100%;
+            box-sizing: border-box;
         }
         #next-btn:hover, #home-btn:hover { background: var(--french-blue); transform: translateY(-3px); }
         
@@ -201,6 +212,49 @@
         .progress-bar { height: 100%; background-color: var(--gold); width: 0%; transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* =========================================
+           تصميم متجاوب للهواتف المحمولة (Responsive) 
+           ========================================= */
+        @media (max-width: 768px) {
+            body { padding: 10px; align-items: flex-start; }
+            .container { padding: 25px 15px; border-radius: 15px; margin-top: 10px;}
+            
+            h1 { font-size: 1.8em; margin-top: 10px;}
+            .subtitle { font-size: 1em; margin-bottom: 20px; }
+            
+            /* أزرار القائمة تترتب عمودياً */
+            .menu-btn { flex-direction: column; padding: 15px; text-align: center; font-size: 1.1em;}
+            .menu-btn span:first-child { margin-bottom: 8px; }
+            .menu-desc { text-align: center; margin-top: 5px; font-size: 0.8em;}
+            
+            /* الإحصائيات */
+            .stats-box { flex-direction: row; padding: 12px 15px; margin-bottom: 20px; }
+            .stat-item { font-size: 1.1em; }
+            .stat-label { font-size: 0.65em; }
+            
+            /* صندوق السؤال */
+            .question-box { padding: 15px; margin-bottom: 15px; }
+            .q-fr { font-size: 1.15em; margin-bottom: 10px;}
+            .q-ar { font-size: 1.05em; }
+            
+            /* خيارات الإجابات (تصغير الخط وتقليل الهوامش) */
+            .options { gap: 10px; }
+            button.opt-btn { padding: 15px 40px 15px 15px; } /* ترك مساحة للأيقونة لتجنب التداخل */
+            .opt-fr { font-size: 0.95em; }
+            .opt-ar { font-size: 0.9em; margin-top: 5px; }
+            button.correct::after, button.wrong::after { font-size: 1.2em; right: 10px;}
+            
+            /* الشرح وزر المتابعة */
+            .explanation { padding: 15px; font-size: 0.95em; margin-top: 15px; }
+            #next-btn, #home-btn { padding: 15px 20px; font-size: 1.1em; margin-top: 20px;}
+            
+            /* منطقة النتيجة النهائية */
+            #result-area i { font-size: 4em; }
+            #result-area h2 { font-size: 2em; }
+            #final-msg { font-size: 1.5em; }
+            #advice-msg { font-size: 1.1em; padding: 15px; }
+        }
     </style>
 </head>
 <body>
@@ -267,10 +321,6 @@
     let currentQuestionIndex = 0;
     let score = 0;
 
-    // ==========================================
-    // الأسئلة بصياغة متقدمة وخيارات (Distractors) خادعة
-    // ==========================================
-    
     const questions_p1 = [
         { 
             q_fr: "En analysant la diapositive de titre, pourquoi la période (1789-1795) est-elle cruciale historiquement ?", 
