@@ -3,191 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Révolution Française : Examen Complet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Projet d'Histoire : La Révolution Française</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Cairo:wght@400;600;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-blue: #2c3e50;
-            --accent-blue: #3498db;
-            --primary-red: #c0392b;
-            --accent-red: #e74c3c;
-            --bg-color: #f4f6f7;
-            --card-bg: #ffffff;
-            --success: #27ae60;
-            --error: #e74c3c;
+            --royal-blue: #1a2530;
+            --french-blue: #0055a4;
+            --french-red: #ef4135;
+            --gold: #d4af37;
+            --light-gold: #fbf5e6;
+            --text-dark: #2c3e50;
         }
 
         body { 
-            font-family: 'Nunito', sans-serif; 
-            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%); 
+            font-family: 'Lora', serif; 
+            /* خلفية متدرجة فخمة تناسب موضوع التاريخ */
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background-attachment: fixed;
             text-align: center; 
-            padding: 20px 10px; 
-            color: var(--primary-blue); 
+            padding: 40px 15px; 
+            color: var(--text-dark); 
             min-height: 100vh;
             margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
+        /* تأثير الزجاج الفاخر للحاوية الرئيسية */
         .container { 
-            max-width: 850px; 
-            margin: 0 auto; 
-            background: var(--card-bg); 
-            padding: 30px; 
-            border-radius: 24px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1); 
-            border-top: 8px solid var(--primary-blue); 
+            max-width: 900px; 
+            width: 100%;
+            background: rgba(255, 255, 255, 0.96); 
+            padding: 40px; 
+            border-radius: 20px; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3); 
+            border: 1px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* شريط علوي تزييني بألوان علم فرنسا */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 6px;
+            background: linear-gradient(to right, var(--french-blue) 33.3%, white 33.3%, white 66.6%, var(--french-red) 66.6%);
         }
         
-        h1 { color: var(--primary-blue); margin-bottom: 5px; font-size: 2.2em; font-weight: 900; }
-        h3 { color: #7f8c8d; font-size: 1.1em; margin-top: 0; font-family: 'Cairo', sans-serif; }
+        h1 { 
+            font-family: 'Cinzel', serif; 
+            color: var(--royal-blue); 
+            font-size: 2.8em; 
+            margin-bottom: 5px; 
+            letter-spacing: 1px;
+        }
         
-        /* Menu Styles */
+        .subtitle { 
+            color: #7f8c8d; 
+            font-size: 1.2em; 
+            font-family: 'Cairo', sans-serif; 
+            margin-bottom: 30px;
+        }
+
+        /* أزرار القائمة الرئيسية */
         .menu-btn { 
             display: flex; 
-            flex-direction: column; 
-            align-items: center; 
+            align-items: center;
+            justify-content: space-between;
             width: 100%; 
-            padding: 25px; 
-            margin: 20px 0; 
-            font-size: 1.2em; 
-            border: 2px solid var(--accent-blue); 
-            background: var(--card-bg); 
-            border-radius: 16px; 
+            padding: 20px 30px; 
+            margin: 15px 0; 
+            font-size: 1.3em; 
+            border: 2px solid var(--gold); 
+            background: transparent; 
+            border-radius: 12px; 
             cursor: pointer; 
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
-            color: var(--primary-blue); 
-            font-weight: 700; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.4s ease; 
+            color: var(--royal-blue); 
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            position: relative;
         }
         .menu-btn:hover { 
-            background: var(--accent-blue); 
+            background: var(--gold); 
             color: white; 
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.2);
+            transform: translateX(10px); 
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
         }
-        .menu-btn:nth-child(2) { border-color: var(--primary-red); }
-        .menu-btn:nth-child(2):hover { background: var(--primary-red); box-shadow: 0 10px 20px rgba(192, 57, 43, 0.2); }
-        .menu-btn:nth-child(3) { border-color: #8e44ad; }
-        .menu-btn:nth-child(3):hover { background: #8e44ad; box-shadow: 0 10px 20px rgba(142, 68, 173, 0.2); }
-        
-        .menu-desc { font-size: 0.85em; color: #7f8c8d; font-weight: 400; display: block; margin-top: 10px; font-family: 'Cairo', sans-serif;}
-        .menu-btn:hover .menu-desc { color: rgba(255,255,255,0.9); }
+        .menu-desc { 
+            font-size: 0.75em; 
+            color: #555; 
+            font-family: 'Cairo', sans-serif; 
+            display: block; 
+            text-align: right;
+            transition: color 0.4s ease;
+        }
+        .menu-btn:hover .menu-desc { color: #fff; }
 
-        /* Stats Bar */
+        /* شريط الإحصائيات */
         .stats-box { 
             display: flex; 
             justify-content: space-between; 
-            background: #f8f9fa; 
-            padding: 15px 25px; 
-            border-radius: 16px; 
-            margin: 20px 0; 
-            border: 1px solid #e9ecef;
+            background: var(--royal-blue); 
+            color: white;
+            padding: 15px 30px; 
+            border-radius: 12px; 
+            margin-bottom: 30px; 
+            font-family: 'Cairo', sans-serif;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
-        .stat-item { font-size: 1.3em; font-weight: 900; color: var(--primary-blue); }
-        .stat-label { font-size: 0.75em; color: #95a5a6; display: block; text-transform: uppercase; letter-spacing: 1px;}
+        .stat-item { font-size: 1.4em; font-weight: bold; }
+        .stat-label { font-size: 0.7em; opacity: 0.8; display: block; text-transform: uppercase; letter-spacing: 2px;}
 
-        /* Flashcard Question Style */
+        /* صندوق السؤال */
         .question-box { 
-            background: linear-gradient(to right bottom, #ffffff, #f4f6f7); 
+            background: var(--light-gold); 
             padding: 30px; 
-            border-radius: 20px; 
-            margin: 25px 0; 
-            text-align: center; 
-            border: 2px solid #e9ecef;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.03);
-            position: relative;
+            border-radius: 15px; 
+            margin-bottom: 25px; 
+            border-left: 6px solid var(--gold);
         }
-        .q-fr { font-size: 1.3em; font-weight: 800; color: var(--primary-blue); display: block; margin-bottom: 12px; }
-        .q-ar { font-size: 1.2em; color: #555; font-family: 'Cairo', sans-serif; direction: rtl; display: block; line-height: 1.5; }
-        
-        .options { display: grid; grid-template-columns: 1fr; gap: 12px; }
+        .q-fr { font-size: 1.4em; font-weight: bold; color: var(--royal-blue); display: block; margin-bottom: 15px; }
+        .q-ar { font-size: 1.25em; color: #444; font-family: 'Cairo', sans-serif; direction: rtl; display: block; }
+
+        /* خيارات الإجابات */
+        .options { display: grid; grid-template-columns: 1fr; gap: 15px; }
         
         button.opt-btn { 
-            padding: 18px; 
-            border: 2px solid #e9ecef; 
-            border-radius: 16px; 
+            padding: 20px; 
+            border: 1px solid #ddd; 
+            border-radius: 12px; 
             cursor: pointer; 
-            background: var(--card-bg); 
-            transition: all 0.2s; 
-            text-align: center; 
+            background: white; 
+            transition: all 0.3s; 
+            text-align: left; 
             display: flex; 
             flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            width: 100%; 
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
         button.opt-btn:hover:not(:disabled) { 
-            background: #f8f9fa; 
-            border-color: var(--accent-blue); 
-            transform: scale(1.02); 
+            border-color: var(--french-blue); 
+            background: #f8fbff;
+            transform: scale(1.01);
         }
         
-        .opt-fr { font-weight: 700; font-size: 1.05em; color: var(--primary-blue); }
-        .opt-ar { font-size: 1em; color: #666; font-family: 'Cairo', sans-serif; margin-top: 6px; direction: rtl;}
+        .opt-fr { font-weight: 600; font-size: 1.1em; color: var(--royal-blue); font-family: 'Lora', serif;}
+        .opt-ar { font-size: 1em; color: #666; font-family: 'Cairo', sans-serif; margin-top: 8px; direction: rtl; text-align: right; width: 100%;}
         
-        button.correct { background: #e8f8f5; border-color: var(--success); }
-        button.correct .opt-fr { color: var(--success); }
-        button.wrong { background: #fdedec; border-color: var(--error); opacity: 0.8; }
-        button.wrong .opt-fr { color: var(--error); }
+        /* تأثيرات الإجابة الصحيحة والخاطئة */
+        button.correct { background: #e8f8f5; border: 2px solid #27ae60; }
+        button.correct::after { content: '\f00c'; font-family: 'FontAwesome'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: #27ae60; font-size: 1.5em; }
+        button.wrong { background: #fdedec; border: 2px solid #e74c3c; opacity: 0.7; }
+        button.wrong::after { content: '\f00d'; font-family: 'FontAwesome'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: #e74c3c; font-size: 1.5em; }
         
         .hidden { display: none !important; }
         
-        #feedback { margin-top: 25px; font-weight: 900; font-size: 1.5em; animation: popIn 0.3s ease; }
-        
+        /* صندوق الشرح المفصل */
         .explanation { 
-            font-size: 1em; 
-            color: #444; 
-            margin-top: 20px; 
-            background: #fff8e1; 
-            padding: 20px; 
-            border-radius: 16px; 
-            border-left: 6px solid #f1c40f; 
-            text-align: left; 
-            line-height: 1.6;
-            animation: slideDown 0.4s ease;
-        }
-        .exp-ar { display: block; margin-top: 10px; color: #555; direction: rtl; text-align: right; font-family: 'Cairo', sans-serif; }
-        
-        #next-btn, #home-btn { 
+            font-size: 1.05em; 
+            color: #333; 
             margin-top: 25px; 
-            padding: 18px; 
-            background: var(--primary-blue); 
+            background: white; 
+            padding: 25px; 
+            border-radius: 12px; 
+            border-top: 4px solid var(--french-blue); 
+            text-align: left; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            animation: fadeIn 0.5s ease;
+        }
+        .exp-fr { display: block; margin-bottom: 10px; font-weight: bold; color: var(--french-blue); }
+        .exp-ar { display: block; margin-top: 10px; color: #555; direction: rtl; text-align: right; font-family: 'Cairo', sans-serif; line-height: 1.6; }
+        
+        /* زر المتابعة */
+        #next-btn, #home-btn { 
+            margin-top: 30px; 
+            padding: 18px 40px; 
+            background: var(--royal-blue); 
             color: white; 
             border: none; 
             font-size: 1.2em; 
-            border-radius: 16px; 
+            font-family: 'Cinzel', serif;
+            border-radius: 30px; 
             cursor: pointer; 
-            width: 100%; 
-            font-weight: 800; 
-            transition: background 0.3s;
-            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
+            font-weight: bold; 
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(26, 37, 48, 0.4);
         }
-        #next-btn:hover, #home-btn:hover { background: #1a252f; }
+        #next-btn:hover, #home-btn:hover { background: var(--french-blue); transform: translateY(-3px); }
         
-        .progress-container { width: 100%; background-color: #e9ecef; border-radius: 10px; height: 10px; margin-bottom: 25px; overflow: hidden; }
-        .progress-bar { height: 100%; background-color: var(--accent-blue); width: 0%; transition: width 0.5s ease-out; }
+        /* شريط التقدم */
+        .progress-container { width: 100%; background-color: #eee; height: 6px; margin-bottom: 30px; border-radius: 3px; overflow: hidden;}
+        .progress-bar { height: 100%; background-color: var(--gold); width: 0%; transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); }
 
-        @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-        @keyframes slideDown { 0% { transform: translateY(-10px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🇫🇷 Révolution Française</h1>
-    <h3>Examen Blanc Complet (1789-1795) | مراجعة شاملة</h3>
+    <h1>La Révolution Française</h1>
+    <div class="subtitle">Projet d'Histoire | 1789 - 1795 | مشروع تاريخي تفاعلي</div>
 
     <div id="main-menu">
         <button class="menu-btn" onclick="startGame(1)">
-            📖 Partie 1 : Les Origines et la Monarchie Constitutionnelle (1-11)
-            <span class="menu-desc">Crise financière, États Généraux, Bastille, Droits de l'Homme<br>الأزمة المالية، اقتحام الباستيل، إعلان الحقوق</span>
+            <span><i class="fa-solid fa-scroll"></i> Partie I : La chute de l'Ancien Régime</span>
+            <span class="menu-desc">أسئلة معمقة حول أسباب الثورة والملكية الدستورية<br>(11 سؤال)</span>
         </button>
         <button class="menu-btn" onclick="startGame(2)">
-            ⚔️ Partie 2 : La Chute du Roi et la République (12-22)
-            <span class="menu-desc">Fuite à Varennes, Exécution de Louis XVI, La Terreur, Directoire<br>سقوط الملكية، إعدام لويس 16، عهد الإرهاب، حكومة الإدارة</span>
+            <span><i class="fa-solid fa-gavel"></i> Partie II : La République et la Terreur</span>
+            <span class="menu-desc">أسئلة تحليلية حول سقوط الملك وحكومة الإرهاب<br>(11 سؤال)</span>
         </button>
-        <button class="menu-btn" onclick="startGame(3)">
-            🔥 Défi Total : Les 22 Questions
-            <span class="menu-desc">Simulation d'examen sur tout le programme<br>محاكاة كاملة للامتحان (22 سؤالاً)</span>
+        <button class="menu-btn" style="background: var(--royal-blue); color: white; border-color: var(--royal-blue);" onclick="startGame(3)">
+            <span><i class="fa-solid fa-crown"></i> L'Épreuve Finale (Complet)</span>
+            <span class="menu-desc" style="color: #ccc;">محاكاة لامتحان كامل بـ 22 سؤالاً للحصول على 20/20</span>
         </button>
     </div>
     
@@ -196,37 +229,36 @@
         
         <div class="stats-box">
             <div class="stat-item">
-                <span class="stat-label">Question / السؤال</span>
-                <span id="q-current">1</span> <span style="color:#bdc3c7">/</span> <span id="q-total">0</span>
+                <span class="stat-label">Question</span>
+                <span id="q-current">1</span> / <span id="q-total">0</span>
             </div>
             <div class="stat-item">
-                <span class="stat-label">Score / النتيجة</span>
-                🏆 <span id="score">0</span>
+                <span class="stat-label">Score (Points)</span>
+                <i class="fa-solid fa-star" style="color:var(--gold); font-size: 0.8em;"></i> <span id="score">0</span>
             </div>
         </div>
         
         <div class="question-box">
-            <span id="q-icon" style="font-size: 3.5em; display:block; margin-bottom:15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);"></span>
             <span id="q-fr" class="q-fr">Question FR</span>
             <span id="q-ar" class="q-ar">سؤال AR</span>
         </div>
         
         <div class="options" id="options-container"></div>
         
-        <div id="feedback"></div>
         <div id="explanation" class="explanation hidden">
-            <strong id="exp-fr"></strong>
+            <span class="exp-fr" id="exp-fr"></span>
             <span id="exp-ar" class="exp-ar"></span>
         </div>
         
-        <button id="next-btn" class="hidden" onclick="nextQuestion()">Question Suivante ➡️</button>
+        <button id="next-btn" class="hidden" onclick="nextQuestion()">Continuer <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
     <div id="result-area" class="hidden">
-        <h2 style="font-size: 2.5em; margin-bottom: 5px;">🎉 Terminé !</h2>
-        <h3 id="final-msg" style="color:var(--primary-blue); font-size: 1.8em; font-weight: 900;"></h3>
-        <p id="advice-msg" style="color:#555; font-family: 'Cairo', sans-serif; font-size: 1.2em; line-height: 1.6; padding: 0 20px;"></p>
-        <button id="home-btn" onclick="location.reload()">🏠 Retour au Menu Principal</button>
+        <i class="fa-solid fa-award" style="font-size: 5em; color: var(--gold); margin-bottom: 20px;"></i>
+        <h2 style="font-size: 2.5em; color: var(--royal-blue); margin-bottom: 10px; font-family: 'Cinzel', serif;">Résultat Final</h2>
+        <h3 id="final-msg" style="color:var(--french-red); font-size: 2em; font-weight: bold;"></h3>
+        <p id="advice-msg" style="color:#555; font-family: 'Cairo', sans-serif; font-size: 1.3em; line-height: 1.6; padding: 20px; background: #f9f9f9; border-radius: 10px; border-left: 5px solid var(--gold); margin: 20px 0;"></p>
+        <button id="home-btn" onclick="location.reload()"><i class="fa-solid fa-rotate-left"></i> Retour à l'accueil</button>
     </div>
 </div>
 
@@ -235,295 +267,277 @@
     let currentQuestionIndex = 0;
     let score = 0;
 
+    // ==========================================
+    // الأسئلة بصياغة متقدمة وخيارات (Distractors) خادعة
+    // ==========================================
+    
     const questions_p1 = [
         { 
-            icon: "📅",
-            q_fr: "Quel est l'objectif principal de la diapositive de titre (1789-1815) ?", 
-            q_ar: "ما هو الهدف الرئيسي من شريحة العنوان (1789-1815)؟",
+            q_fr: "En analysant la diapositive de titre, pourquoi la période (1789-1795) est-elle cruciale historiquement ?", 
+            q_ar: "بتحليل شريحة العنوان، لماذا تعتبر الفترة (1789-1795) حاسمة تاريخياً؟",
             options: [
-                { fr: "Montrer uniquement les victoires militaires de Napoléon", ar: "إظهار الانتصارات العسكرية لنابليون فقط" },
-                { fr: "Délimiter le cadre chronologique de la chute de la monarchie jusqu'à la fin de l'Empire", ar: "تحديد الإطار الزمني من سقوط الملكية حتى نهاية الإمبراطورية" }, 
-                { fr: "Expliquer les causes religieuses de la Révolution", ar: "شرح الأسباب الدينية للثورة" }
+                { fr: "Elle représente uniquement la période de domination militaire de Napoléon sur l'Europe.", ar: "تمثل فقط فترة السيطرة العسكرية لنابليون على أوروبا." },
+                { fr: "Elle condense la transition brutale de la monarchie absolue vers la République, jusqu'à l'instauration du Directoire.", ar: "تكثف الانتقال العنيف من الملكية المطلقة إلى الجمهورية، وصولاً لتأسيس حكومة الإدارة." }, 
+                { fr: "Elle correspond exactement à la durée de vie de la première Constitution française.", ar: "تتطابق تماماً مع فترة استمرار الدستور الفرنسي الأول." }
             ], 
             answer: 1, 
-            exp_fr: "La vidéo propose une synthèse chronologique des bouleversements politiques majeurs de cette période.",
-            exp_ar: "الدرس عبارة عن توليفة (Synthèse) مرتبة زمنياً لأهم التغييرات السياسية التي عصفت بفرنسا."
+            exp_fr: "Explication : La vidéo fait une synthèse chronologique des bouleversements politiques intenses avant l'Empire.",
+            exp_ar: "الشرح: هذه السنوات الست تكثف أضخم تغيير سياسي في فرنسا؛ سقوط نظام استمر لقرون، وإعدام الملك، ثم مرحلة الرعب، وصولاً لنظام الإدارة."
         },
         { 
-            icon: "🗺️",
-            q_fr: "Selon la 'Carte de l'ancienne France', qu'est-ce qui a poussé Louis XVI à convoquer les États Généraux ?", 
-            q_ar: "حسب 'خريطة فرنسا القديمة'، ما الذي دفع لويس 16 لاستدعاء مجلس الطبقات؟",
+            q_fr: "Que révèle la 'Carte de l'ancienne France' sur les causes profondes du blocage politique en 1789 ?", 
+            q_ar: "ماذا تكشف 'خريطة فرنسا القديمة' عن الأسباب العميقة للانسداد السياسي عام 1789؟",
             options: [
-                { fr: "La volonté d'établir une démocratie", ar: "الرغبة في تأسيس ديمقراطية" },
-                { fr: "Le risque de banqueroute dû aux guerres (Sept Ans, Amérique) et le blocage des parlements", ar: "خطر الإفلاس بسبب الحروب (السنوات السبع، أمريكا) وتعطيل البرلمانات للضرائب" }, 
-                { fr: "Une invasion surprise de l'Angleterre", ar: "غزو مفاجئ من إنجلترا" }
+                { fr: "L'hostilité des paysans qui refusaient d'adopter de nouvelles méthodes agricoles.", ar: "عداء الفلاحين الذين رفضوا تبني أساليب زراعية جديدة." },
+                { fr: "L'hétérogénéité des lois et le refus des parlements (noblesse) d'accepter de nouveaux impôts pour sauver l'État de la banqueroute.", ar: "عدم تجانس القوانين ورفض البرلمانات (النبلاء) قبول ضرائب جديدة لإنقاذ الدولة من الإفلاس." }, 
+                { fr: "Le complot des protestants pour diviser le royaume en plusieurs petits états.", ar: "مؤامرة البروتستانت لتقسيم المملكة إلى عدة دويلات صغيرة." }
             ], 
             answer: 1, 
-            exp_fr: "La France était ruinée, et les nobles refusaient de payer de nouveaux impôts, créant un blocage total.",
-            exp_ar: "كانت فرنسا على حافة الإفلاس، ورفض النبلاء دفع الضرائب هو ما شل حركة الدولة تماماً."
+            exp_fr: "Explication : Les guerres (Sept Ans, Amérique) ont ruiné la France. Les nobles protégeaient leurs privilèges, forçant le Roi à convoquer les États Généraux.",
+            exp_ar: "الشرح: الخريطة المعقدة تعكس النظام القديم حيث تختلف القوانين. رفض النبلاء دفع الضرائب (رغم الإفلاس بسبب حرب أمريكا) هو ما شلّ حركة الدولة وأجبر الملك على التنازل."
         },
         { 
-            icon: "🔺",
-            q_fr: "Comment les idées des 'Lumières' ont-elles influencé le 'Tiers État' ?", 
-            q_ar: "كيف أثرت أفكار 'التنوير' على 'الطبقة الثالثة'؟",
+            q_fr: "Dans le diagramme de la 'Pyramide sociale', quelle est la grande contradiction du Tiers État ?", 
+            q_ar: "في رسم 'الهرم الاجتماعي'، ما هو التناقض الأكبر الذي تعيشه الطبقة الثالثة؟",
             options: [
-                { fr: "Elles les ont poussés à accepter leur destin", ar: "دفعتهم لتقبل مصيرهم" },
-                { fr: "Elles ont remis en cause la monarchie absolue et inspiré l'exigence d'égalité", ar: "شككت في الملكية المطلقة وألهمتهم المطالبة بالمساواة" }, 
-                { fr: "Elles ont encouragé la création de nouvelles religions", ar: "شجعت على ابتكار أديان جديدة" } 
+                { fr: "Elle est la seule à posséder des terres, mais refuse de travailler.", ar: "هي الوحيدة التي تملك الأراضي، لكنها ترفض العمل." },
+                { fr: "Elle est composée d'une bourgeoisie riche et éduquée aux idées des Lumières, mais qui reste exclue du pouvoir politique et écrasée d'impôts.", ar: "تتكون من برجوازية غنية ومثقفة بأفكار التنوير، لكنها مقصية من السلطة السياسية ومثقلة بالضرائب." }, 
+                { fr: "Elle ne paie aucun impôt, mais exige de diriger l'armée royale.", ar: "لا تدفع أي ضرائب، لكنها تطالب بقيادة الجيش الملكي." } 
             ], 
             answer: 1, 
-            exp_fr: "Inspiré par le succès des États-Unis, le Tiers État (98% de la pop.) refusait l'inégalité des privilèges.",
-            exp_ar: "بإلهام من نجاح أمريكا، أصرت الطبقة الثالثة (التي تدفع كل الضرائب) على إنهاء الامتيازات الظالمة للنبلاء ورجال الدين."
+            exp_fr: "Explication : Le Tiers État (98%) n'est pas que paysan ; la bourgeoisie influencée par les Lumières et la réussite américaine a mené la Révolution.",
+            exp_ar: "الشرح: الخدعة هنا أن الطبقة الثالثة ليست مجرد فقراء، بل تضم فئة 'البرجوازية' الثرية والمتعلمة التي كانت تدير الاقتصاد لكنها محرومة من أي منصب سياسي بسبب عدم انتمائها للنبلاء."
         },
         { 
-            icon: "🌾",
-            q_fr: "Pourquoi le 'Graphique des prix du blé' est-il crucial pour comprendre 1789 ?", 
-            q_ar: "لماذا يعتبر 'منحنى أسعار القمح' حاسماً لفهم عام 1789؟",
+            q_fr: "Quelle a été la fonction historique du 'Prix du blé' (1788-1789) dans le déclenchement de la Révolution ?", 
+            q_ar: "ما هي الوظيفة التاريخية لـ 'أسعار القمح' (1788-1789) في اندلاع الثورة؟",
             options: [
-                { fr: "Il montre que la France était très riche", ar: "يظهر أن فرنسا كانت غنية جداً" },
-                { fr: "Il prouve que les mauvaises récoltes de 1788 ont causé une famine, étincelle de la révolte", ar: "يثبت أن المحاصيل الكارثية لعام 1788 سببت مجاعة كانت شرارة التمرد" },
-                { fr: "Il explique l'exportation massive de blé vers l'Angleterre", ar: "يشرح التصدير الكثيف للقمح نحو إنجلترا" } 
+                { fr: "Il a forcé le Roi à importer massivement du blé britannique.", ar: "أجبر الملك على استيراد القمح البريطاني بكثافة." },
+                { fr: "Il a agi comme un 'catalyseur' : la famine a transformé un débat politique bourgeois en une explosion de violence populaire.", ar: "عمل كـ 'مُحفّز': المجاعة حوّلت النقاش السياسي البرجوازي إلى انفجار عنف شعبي." },
+                { fr: "Il a enrichi le Clergé qui monopolisait le commerce des grains.", ar: "أدى إلى إثراء رجال الدين الذين احتكروا تجارة الحبوب." } 
             ], 
             answer: 1, 
-            exp_fr: "La crise économique a transformé le mécontentement politique en véritable fureur populaire de survie.",
-            exp_ar: "الندرة والجوع هما ما دفعا عوام الشعب (وليس السياسيين فقط) للخروج واستخدام العنف."
+            exp_fr: "Explication : Les mauvaises récoltes ont créé une crise de subsistance (disette). Le peuple affamé est devenu le bras armé de la Révolution.",
+            exp_ar: "الشرح: السياسة وحدها لم تكن لتحرك الشارع. الارتفاع الجنوني لسعر الخبز (المجاعة) هو الذي جعل بسطاء الشعب يخرجون للشارع ويستخدمون العنف لتأمين بقائهم."
         },
         { 
-            icon: "👑",
-            q_fr: "Que symbolise le portrait de Louis XVI en habits de sacre ?", 
-            q_ar: "إلى ماذا يرمز بورتريه لويس 16 بملابس التتويج؟",
+            q_fr: "Face au portrait de Louis XVI en habits de sacre, quelle ironie politique caractérise sa situation en 1789 ?", 
+            q_ar: "بالنظر لبورتريه لويس 16 بملابس التتويج، ما هي المفارقة السياسية التي ميزت وضعه عام 1789؟",
             options: [
-                { fr: "Une monarchie absolue de droit divin, mais incapable de résoudre la crise", ar: "ملكية مطلقة بحق إلهي، لكنها عاجزة عن حل الأزمة" },
-                { fr: "Un roi moderne et démocrate", ar: "ملك حديث وديمقراطي" },
-                { fr: "Un chef militaire victorieux", ar: "قائد عسكري منتصر" }
+                { fr: "Il possède un pouvoir absolu de droit divin, mais est contraint de demander l'aide de ses sujets pour éviter la faillite.", ar: "يملك سلطة مطلقة بحق إلهي، لكنه مجبر على طلب مساعدة رعاياه لتجنب الإفلاس." },
+                { fr: "Il est le roi le plus populaire d'Europe, mais déteste gouverner.", ar: "هو الملك الأكثر شعبية في أوروبا، لكنه يكره الحكم." },
+                { fr: "Il veut imposer une constitution démocratique, mais le peuple la refuse.", ar: "يريد فرض دستور ديمقراطي، لكن الشعب يرفضه." }
             ], 
             answer: 0, 
-            exp_fr: "Il avait tous les pouvoirs, mais l'impasse financière l'a obligé à utiliser une institution oubliée depuis 1614.",
-            exp_ar: "كان يمتلك السلطة المطلقة، لكن أزمة الديون أجبرته على إظهار ضعفه واستدعاء مجلس الطبقات بعد انقطاع طويل."
+            exp_fr: "Explication : L'image montre la toute-puissance théorique, alors qu'en réalité, l'impasse financière l'oblige à convoquer les États Généraux (inutilisés depuis 1614).",
+            exp_ar: "الشرح: المفارقة (Ironie) هي أن اللوحة تظهره كإله على الأرض، بينما هو في الواقع مفلس وعاجز وضعيف لدرجة استدعاء البرلمان (مجلس الطبقات) الذي كان مجمداً لقرن ونصف."
         },
         { 
-            icon: "🏛️",
-            q_fr: "Lors de l'Ouverture des États généraux (5 mai 1789), pourquoi le Tiers État s'est-il rebellé ?", 
-            q_ar: "أثناء افتتاح مجلس الطبقات (5 ماي 1789)، لماذا تمردت الطبقة الثالثة؟",
+            q_fr: "Lors de l'Ouverture des États généraux (mai 1789), quel fut le piège procédural tendu au Tiers État ?", 
+            q_ar: "أثناء افتتاح مجلس الطبقات (ماي 1789)، ما هو الفخ الإجرائي الذي نُصب للطبقة الثالثة؟",
             options: [
-                { fr: "Le Roi a imposé le 'vote par ordre' au lieu du 'vote par tête'", ar: "فرض الملك 'التصويت بالطبقة' بدلاً من 'التصويت بالرأس'" }, 
-                { fr: "Les nobles ont attaqué le Tiers État", ar: "هاجم النبلاء الطبقة الثالثة" },
-                { fr: "Le lieu de la réunion était trop petit", ar: "كان مكان الاجتماع صغيراً جداً" }
-            ], 
-            answer: 0, 
-            exp_fr: "Le vote par ordre garantissait la victoire des privilégiés (2 contre 1). En réponse, ils se déclarent 'Assemblée nationale' le 17 juin.",
-            exp_ar: "التصويت بالطبقة كان يعني إفشال أي مقترح إصلاحي مسبقاً، لذلك أعلنوا أنفسهم الممثل الوحيد للأمة."
-        },
-        { 
-            icon: "✋",
-            q_fr: "Quel était l'objectif ultime du 'Serment du Jeu de paume' (20 juin 1789) ?", 
-            q_ar: "ما هو الهدف النهائي لـ 'قسم لعبة الكف' (20 جوان 1789)؟",
-            options: [
-                { fr: "Assassiner le Roi", ar: "اغتيال الملك" }, 
-                { fr: "Ne pas se séparer avant de donner une Constitution au royaume", ar: "عدم التفرق قبل منح المملكة دستوراً" }, 
-                { fr: "Annuler les dettes des paysans", ar: "إلغاء ديون الفلاحين" }
+                { fr: "Le Roi a exigé que les débats se fassent en latin.", ar: "طالب الملك بأن تتم النقاشات باللغة اللاتينية." },
+                { fr: "Le maintien du 'vote par ordre', qui assurait automatiquement la majorité (2 contre 1) aux ordres privilégiés malgré le doublement des députés du Tiers.", ar: "الإبقاء على 'التصويت بالطبقة'، مما يضمن الأغلبية (2 ضد 1) للطبقات المتميزة رغم مضاعفة نواب الطبقة الثالثة." },
+                { fr: "L'interdiction formelle de discuter des impôts.", ar: "المنع الرسمي لمناقشة الضرائب." }
             ], 
             answer: 1, 
-            exp_fr: "C'est l'acte fondateur de la souveraineté nationale. Le Roi cède le 27 juin et l'Assemblée devient 'Constituante'.",
-            exp_ar: "أرادوا تقييد سلطة الملك المطلقة بقانون أسمى، وهو ما أسس لبداية 'الملكية الدستورية'."
+            exp_fr: "Explication : Le Tiers État avait deux fois plus de députés, mais si on vote par groupe (ordre), cela ne sert à rien. D'où leur rébellion le 17 juin.",
+            exp_ar: "الشرح: الخدعة كانت أن الملك سمح للطبقة الثالثة بزيادة عدد نوابها لإرضائهم شكلياً، لكنه أبقى على طريقة التصويت القديمة (كل طبقة لها صوت واحد)، مما جعل أصواتهم الكثيرة بلا قيمة حقيقية."
         },
         { 
-            icon: "🏰",
-            q_fr: "Pourquoi la Prise de la Bastille (14 juillet 1789) a-t-elle eu lieu initialement ?", 
-            q_ar: "لماذا وقع اقتحام سجن الباستيل (14 جويلية 1789) في البداية؟",
+            q_fr: "Quel est le sens juridique profond du 'Serment du Jeu de paume' (20 juin 1789) ?", 
+            q_ar: "ما هو المعنى القانوني العميق لـ 'قسم لعبة الكف' (20 جوان 1789)؟",
             options: [
-                { fr: "Pour libérer des milliers de prisonniers politiques", ar: "لتحرير آلاف السجناء السياسيين" },
-                { fr: "Pour chercher de la poudre après le renvoi du ministre Necker", ar: "للبحث عن البارود بعد طرد الوزير نيكر" }, 
-                { fr: "Pour voler le trésor royal", ar: "لسرقة الكنز الملكي" } 
+                { fr: "C'est la déclaration de guerre officielle contre l'Autriche.", ar: "هو الإعلان الرسمي للحرب ضد النمسا." }, 
+                { fr: "C'est l'acte fondateur de la souveraineté nationale : les députés s'imposent comme pouvoir constituant face à l'arbitraire royal.", ar: "هو العمل التأسيسي للسيادة الوطنية: فرض النواب أنفسهم كسلطة تأسيسية في مواجهة الاستبداد الملكي." }, 
+                { fr: "C'est la décision d'exécuter la famille royale.", ar: "هو قرار إعدام العائلة الملكية." }
             ], 
             answer: 1, 
-            exp_fr: "La milice bourgeoise s'était emparée d'armes aux Invalides et cherchait de la poudre. C'est devenu le symbole de la chute de l'arbitraire.",
-            exp_ar: "الشعب خاف من هجوم جيش الملك فبحث عن البارود للدفاع عن نفسه، لكن سقوط القلعة أصبح الرمز الأكبر لانتصار الثورة."
+            exp_fr: "Explication : En jurant de rédiger une Constitution, ils mettent fin à la monarchie absolue de droit divin. Le Roi cède le 27 juin.",
+            exp_ar: "الشرح: قانونياً، هذا القسم سحب شرعية التشريع من الملك وأعطاها لـ 'الأمة'. من هنا تحولت فرنسا إلى 'ملكية دستورية' حيث القانون أعلى من الملك."
         },
         { 
-            icon: "🔥",
-            q_fr: "Quelle a été la conséquence politique de la 'Grande Peur' dans les campagnes ?", 
-            q_ar: "ما هي النتيجة السياسية لـ 'الخوف الكبير' في الأرياف؟",
+            q_fr: "La Prise de la Bastille (14 juillet 1789) est un symbole mondial. Mais quelle était la motivation tactique immédiate des émeutiers ?", 
+            q_ar: "اقتحام الباستيل (14 جويلية) رمز عالمي. لكن ما هو الدافع التكتيكي المباشر للمتمردين آنذاك؟",
             options: [
-                { fr: "Le retour à l'ordre monarchique", ar: "العودة إلى النظام الملكي" },
-                { fr: "La pendaison de tous les paysans", ar: "شنق جميع الفلاحين" },
-                { fr: "L'abolition de tous les privilèges la nuit du 4 août", ar: "إلغاء جميع الامتيازات في ليلة 4 أوت" } 
+                { fr: "Libérer les grands philosophes des Lumières qui y étaient enfermés.", ar: "تحرير فلاسفة التنوير الكبار المسجونين هناك." },
+                { fr: "S'emparer de la poudre à canon pour armer la milice bourgeoise face aux troupes royales entourant Paris.", ar: "الاستيلاء على البارود لتسليح الميليشيا البرجوازية لمواجهة القوات الملكية المحيطة بباريس." }, 
+                { fr: "Détruire les archives des impôts royaux.", ar: "تدمير أرشيف الضرائب الملكية." } 
+            ], 
+            answer: 1, 
+            exp_fr: "Explication : Après le renvoi de Necker, le peuple a eu peur d'une répression. Ils ont pris des fusils aux Invalides, puis ont attaqué la Bastille pour la poudre.",
+            exp_ar: "الشرح: لم يهاجموا السجن بحثاً عن الحرية السياسية في تلك اللحظة، بل بحثاً عن 'البارود' لتشغيل البنادق التي سرقوها لكي يدافعوا عن باريس من جيش الملك الذي كان يقترب."
+        },
+        { 
+            q_fr: "La 'Grande Peur' (été 1789) a forcé l'Assemblée à prendre une décision radicale dans la nuit du 4 août. Laquelle ?", 
+            q_ar: "أجبر 'الخوف الكبير' (صيف 1789) الجمعية الوطنية على اتخاذ قرار جذري ليلة 4 أوت. ما هو؟",
+            options: [
+                { fr: "L'envoi de l'armée pour massacrer tous les paysans rebelles.", ar: "إرسال الجيش لذبح جميع الفلاحين المتمردين." },
+                { fr: "Le transfert immédiat de la capitale de Paris à Versailles.", ar: "النقل الفوري للعاصمة من باريس إلى فرساي." },
+                { fr: "L'abolition totale des privilèges féodaux pour calmer les campagnes et instaurer l'égalité juridique.", ar: "الإلغاء التام للامتيازات الإقطاعية لتهدئة الأرياف وإرساء المساواة القانونية." } 
             ], 
             answer: 2, 
-            exp_fr: "Pour calmer les pillages de châteaux, l'Assemblée consacre l'égalité des citoyens devant la loi.",
-            exp_ar: "لإيقاف الفوضى وحرق السجلات الإقطاعية، اضطرت الجمعية لإلغاء النظام الطبقي وإعلان المساواة القانونية."
+            exp_fr: "Explication : Les paysans attaquaient les châteaux. Pour stopper le chaos, les députés (dont des nobles) sacrifient leurs privilèges historiques.",
+            exp_ar: "الشرح: الخوف من الفوضى الشاملة جعل النبلاء يتنازلون عن حقوقهم التاريخية، وهذا القرار هو الذي أسقط فعلياً هيكل النظام القديم."
         },
         { 
-            icon: "📜",
-            q_fr: "De quel document la 'Déclaration des droits de l'homme' s'inspire-t-elle fortement ?", 
-            q_ar: "من أي وثيقة استوحي 'إعلان حقوق الإنسان' بشكل كبير؟",
+            q_fr: "Quelle est l'importance de la 'Déclaration des droits de l'homme et du citoyen' (26 août 1789) ?", 
+            q_ar: "ما هي أهمية 'إعلان حقوق الإنسان والمواطن' (26 أوت 1789)؟",
             options: [
-                { fr: "De la déclaration d'indépendance américaine", ar: "من إعلان الاستقلال الأمريكي" }, 
-                { fr: "De la Magna Carta anglaise", ar: "من الماجنا كارتا الإنجليزية" }, 
-                { fr: "Du code de Justinien", ar: "من قانون جستنيان" } 
+                { fr: "Elle fixe les principes universels (Liberté, Égalité) qui serviront de préambule à la Constitution, s'inspirant du modèle américain.", ar: "تحدد المبادئ العالمية (الحرية، المساواة) التي ستكون ديباجة للدستور، مستلهمة من النموذج الأمريكي." }, 
+                { fr: "Elle abolit l'esclavage dans toutes les colonies françaises de manière définitive.", ar: "ألغت العبودية في جميع المستعمرات الفرنسية بصفة نهائية." }, 
+                { fr: "Elle déclare la séparation stricte de l'Église et de l'État.", ar: "أعلنت الفصل الصارم بين الكنيسة والدولة." } 
             ], 
             answer: 0, 
-            exp_fr: "Adoptée le 26 août, elle fixe les droits individuels et deviendra le préambule de la future Constitution.",
-            exp_ar: "تأثرت بشدة بالثورة الأمريكية، ورسخت مبادئ الحرية والمساواة وأصبحت مرجعية لأوروبا."
+            exp_fr: "Explication : C'est le texte fondamental de la Révolution. À noter que l'esclavage ne sera aboli qu'en 1794 sous Robespierre (avant d'être rétabli par Napoléon).",
+            exp_ar: "الشرح: الخيار الثاني فخ، لأن العبودية لم تلغَ في 1789 بل لاحقاً. الإعلان كان وثيقة حقوقية نظرية رسمت شكل فرنسا الحديثة."
         },
         { 
-            icon: "🧩",
-            q_fr: "Pourquoi a-t-on créé la carte des 'Nouveaux Départements' en 1790 ?", 
-            q_ar: "لماذا تم رسم خريطة 'الأقاليم الجديدة' في 1790؟",
+            q_fr: "Quel était le but de la création de la carte des 'Nouveaux Départements' en 1790 ?", 
+            q_ar: "ما كان الهدف من إنشاء خريطة 'الأقاليم الجديدة' في 1790؟",
             options: [
-                { fr: "Pour faciliter la tenue des futures élections et unifier l'administration", ar: "لتسهيل إجراء الانتخابات وتوحيد الإدارة" }, 
-                { fr: "Pour isoler Paris du reste du pays", ar: "لعزل باريس عن باقي البلاد" }, 
-                { fr: "Pour diviser la France en pays indépendants", ar: "لتقسيم فرنسا لدول مستقلة" }
+                { fr: "Détruire l'identité culturelle des différentes régions de France.", ar: "تدمير الهوية الثقافية لمختلف مناطق فرنسا." },
+                { fr: "Rationaliser l'espace national par un découpage géométrique pour faciliter l'administration et la tenue des élections.", ar: "عقلنة الفضاء الوطني بتقسيم هندسي لتسهيل الإدارة وإجراء الانتخابات." }, 
+                { fr: "Préparer des zones militaires défensives contre l'Autriche.", ar: "تجهيز مناطق عسكرية دفاعية ضد النمسا." }
             ], 
-            answer: 0, 
-            exp_fr: "Il fallait remplacer les anciennes provinces chaotiques de l'Ancien Régime par une division rationnelle.",
-            exp_ar: "للقضاء على الفوضى القديمة، تم تقسيم فرنسا إلى 83 قسماً متساوياً لتطبيق قوانين موحدة على الجميع."
+            answer: 1, 
+            exp_fr: "Explication : La Révolution voulait l'égalité partout. Remplacer les provinces inégales par 83 départements presque identiques était une mesure de centralisation et d'efficacité.",
+            exp_ar: "الشرح: تطبيقاً لمبدأ 'المساواة'، أرادت الدولة أن تخضع جميع الأراضي لنفس القوانين ونفس التقسيم الإداري، عكس فوضى المقاطعات القديمة."
         }
     ];
 
     const questions_p2 = [
         { 
-            icon: "⚖️",
-            q_fr: "Qu'est-ce qui a provoqué un 'schisme' (division) avec la Constitution civile du clergé ?", 
-            q_ar: "ما الذي تسبب في 'انقسام' (شيزم) بسبب الدستور المدني لرجال الدين؟",
+            q_fr: "Pourquoi la caricature de la 'Constitution civile du clergé' illustre-t-elle le début d'une fracture nationale ?", 
+            q_ar: "لماذا يوضح كاريكاتير 'الدستور المدني لرجال الدين' بداية انقسام وطني؟",
             options: [
-                { fr: "La transformation des prêtres en fonctionnaires élus, condamnée par le Pape", ar: "تحويل القساوسة لموظفين منتخبين، وهو ما أدانه البابا" }, 
-                { fr: "L'obligation pour les prêtres de se marier", ar: "إجبار القساوسة على الزواج" }, 
-                { fr: "La destruction systématique des églises", ar: "التدمير المنهجي للكنائس" }
+                { fr: "Parce que l'État oblige les prêtres à prêter serment à la Nation, provoquant la condamnation du Pape et la création d'un clergé 'réfractaire'.", ar: "لأن الدولة تجبر القساوسة على أداء قسم الولاء للأمة، مما أثار إدانة البابا وخلق فئة من رجال الدين 'الرافضين'." }, 
+                { fr: "Parce qu'elle force tous les Français à se convertir au protestantisme.", ar: "لأنها تجبر جميع الفرنسيين على اعتناق البروتستانتية." }, 
+                { fr: "Parce que les prêtres ont exigé de ne plus payer d'impôts.", ar: "لأن القساوسة طالبوا بعدم دفع الضرائب مجدداً." }
             ], 
             answer: 0, 
-            exp_fr: "Le Pape Pie VI a condamné la Révolution, forçant les prêtres à choisir entre la République et l'Église.",
-            exp_ar: "أرادت الدولة السيطرة على الكنيسة لتقليل الديون، لكن هذا جعل الكنيسة الكاثوليكية عدواً للثورة."
+            exp_fr: "Explication : La confiscation des biens de l'Église a transformé les prêtres en fonctionnaires. Le refus du Pape Pie VI a divisé les Français entre Révolutionnaires et Catholiques traditionnels.",
+            exp_ar: "الشرح: هذا القرار كان خطأً استراتيجياً من الثوار، لأنه جعل الدين عدواً للثورة، مما أشعل لاحقاً حروباً أهلية دموية كحرب الفونديه."
         },
         { 
-            icon: "🚶‍♀️",
-            q_fr: "Quel a été l'effet de la 'Marche des femmes sur Versailles' (octobre 1789) ?", 
-            q_ar: "ما هو تأثير 'مسيرة النساء إلى فرساي' (أكتوبر 1789)؟",
+            q_fr: "Quel enjeu politique majeur se cache derrière le dessin de la 'Marche des femmes sur Versailles' (octobre 1789) ?", 
+            q_ar: "ما هو الرهان السياسي الكبير الذي يختبئ خلف رسم 'مسيرة النساء إلى فرساي' (أكتوبر 1789)؟",
             options: [
-                { fr: "Les femmes ont pris le pouvoir politique", ar: "استولت النساء على السلطة السياسية" },
-                { fr: "Le Roi a été forcé de déménager au palais des Tuileries à Paris", ar: "أُجبر الملك على الانتقال لقصر التويلري في باريس" }, 
-                { fr: "Le Roi a fait tirer sur la foule", ar: "أمر الملك بإطلاق النار على الحشود" } 
+                { fr: "La volonté d'obliger le Roi à signer une déclaration de guerre contre l'Espagne.", ar: "الرغبة في إجبار الملك على توقيع إعلان حرب ضد إسبانيا." },
+                { fr: "Ramené aux Tuileries à Paris, le Roi devient l'otage politique de la foule, perdant sa liberté d'action.", ar: "بإعادته إلى التويلري في باريس، أصبح الملك رهينة سياسية للحشود، فاقداً حريته في التصرف." }, 
+                { fr: "L'octroi immédiat du droit de vote aux femmes parisiennes.", ar: "المنح الفوري لحق التصويت لنساء باريس." } 
             ], 
             answer: 1, 
-            exp_fr: "Face à la faim et au refus du Roi de signer les réformes, la foule le ramène à Paris sous son contrôle direct.",
-            exp_ar: "أصبح الملك 'رهينة' في باريس تحت المراقبة المباشرة للشعب الغاضب."
+            exp_fr: "Explication : Au départ pour réclamer du pain (et protester contre les troupes royales), l'événement se termine par la mise sous surveillance physique du pouvoir royal au cœur de Paris.",
+            exp_ar: "الشرح: الخيار الثالث فخ (النساء لم ينلن حق التصويت). المسيرة بدأت بسبب الجوع، لكن نتيجتها السياسية كانت نقل الملك من قصره المعزول (فرساي) ليصبح تحت رحمة الشعب في باريس."
         },
         { 
-            icon: "🏃‍♂️",
-            q_fr: "Pourquoi l'arrestation du Roi à Varennes (juin 1791) est-elle une 'véritable bascule' ?", 
-            q_ar: "لماذا يعتبر القبض على الملك في فارين (جوان 1791) 'نقطة تحول كبرى'؟",
+            q_fr: "L'Arrestation du Roi à Varennes (juin 1791) est un séisme politique car :", 
+            q_ar: "القبض على الملك في فارين (جوان 1791) يعتبر زلزالاً سياسياً لأن:",
             options: [
-                { fr: "Le Roi, perçu dorénavant comme un traître, perd le respect du peuple et l'idée de République naît", ar: "الملك، الذي أصبح يُعتبر خائناً، فقد احترام الشعب وظهرت فكرة الجمهورية" }, 
-                { fr: "Le Roi a réussi à rejoindre l'armée autrichienne", ar: "نجح الملك في الانضمام للجيش النمساوي" },
-                { fr: "Le peuple a pardonné immédiatement au Roi", ar: "سامح الشعب الملك فوراً" }
+                { fr: "Le Roi, en fuyant, est perçu comme un traître complotant avec l'étranger, ce qui désacralise la monarchie et fait germer l'idée de République.", ar: "الملك بهروبه اعتُبر خائناً يتآمر مع الخارج، مما أسقط قدسية الملكية وزرع فكرة الجمهورية." }, 
+                { fr: "C'est la première fois qu'un Roi de France est capturé par l'armée prussienne.", ar: "هي المرة الأولى التي يُؤسر فيها ملك فرنسي من قبل الجيش البروسي." },
+                { fr: "Le peuple décide immédiatement de couronner son fils à sa place.", ar: "قرر الشعب فوراً تتويج ابنه مكانه." }
             ], 
             answer: 0, 
-            exp_fr: "La confiance est brisée. La fin de la monarchie est sérieusement envisagée pour la première fois.",
-            exp_ar: "أدرك الشعب أن الملك كان يتآمر مع أعداء الثورة ليهرب، فانهارت صورته المقدسة."
+            exp_fr: "Explication : Jusqu'ici, le peuple aimait son Roi. Varennes est la rupture de la confiance (véritable bascule).",
+            exp_ar: "الشرح: قبل هذا الحدث، كان الشعب يثق بالملك ويريد 'ملكية دستورية'. بعد محاولة هروبه وانضمامه لأعداء فرنسا، انكسرت الثقة وبدأ المطالبة بـ 'الجمهورية'."
         },
         { 
-            icon: "⚔️",
-            q_fr: "Que se passe-t-il lors de la Prise du palais des Tuileries (10 août 1792) ?", 
-            q_ar: "ماذا حدث أثناء اقتحام قصر التويلري (10 أوت 1792)؟",
+            q_fr: "Que représente historiquement la peinture de la Prise du palais des Tuileries (10 août 1792) ?", 
+            q_ar: "ماذا تمثل لوحة اقتحام قصر التويلري (10 أوت 1792) تاريخياً؟",
             options: [
-                { fr: "Le Roi est sauvé par les Gardes suisses", ar: "تم إنقاذ الملك بواسطة الحرس السويسري" },
-                { fr: "L'inflation et la menace étrangère poussent les insurgés à destituer le Roi, mettant fin à la monarchie", ar: "التضخم والتهديد الأجنبي دفعا الثوار لعزل الملك، منهيين بذلك الملكية" }, 
-                { fr: "Napoléon prend le pouvoir", ar: "استولى نابليون على السلطة" } 
+                { fr: "Une simple émeute pour voler les bijoux de la Reine.", ar: "مجرد تمرد لسرقة مجوهرات الملكة." },
+                { fr: "La chute de la Monarchie en France : sous la pression de la Commune insurrectionnelle et de la menace austro-prussienne, le Roi est destitué.", ar: "سقوط الملكية في فرنسا: تحت ضغط كومونة التمرد والتهديد النمساوي البروسي، تم عزل الملك." }, 
+                { fr: "L'assassinat de Louis XVI par les Gardes suisses.", ar: "اغتيال لويس 16 على يد الحرس السويسري." } 
             ], 
             answer: 1, 
-            exp_fr: "La Commune de Paris prend le pouvoir de facto. C'est la chute définitive de la royauté en France.",
-            exp_ar: "بسبب الخوف من الغزو النمساوي-البروسي، أسقط الشعب الملكية رسمياً وسجن الملك."
+            exp_fr: "Explication : C'est la fin de 1000 ans de royauté. L'Assemblée, sous la pression populaire et la peur de l'invasion (Manifeste de Brunswick), emprisonne la famille royale.",
+            exp_ar: "الشرح: 10 أوت هو التاريخ الفعلي لوفاة الملكية في فرنسا وبداية الجمهورية، مدفوعاً بالخوف من غزو الأجانب وتواطؤ الملك معهم."
         },
         { 
-            icon: "🩸",
-            q_fr: "Quelle a été la principale conséquence internationale de l'exécution de Louis XVI (Janvier 1793) ?", 
-            q_ar: "ما هي النتيجة الدولية الرئيسية لإعدام لويس 16 (جانفي 1793)؟",
+            q_fr: "Laquelle de ces propositions explique le mieux les conséquences de l'Exécution de Louis XVI (21 janvier 1793) ?", 
+            q_ar: "أي من هذه الاقتراحات يفسر بشكل أفضل نتائج إعدام لويس 16 (21 جانفي 1793)؟",
             options: [
-                { fr: "La signature d'un traité de paix universel", ar: "توقيع معاهدة سلام عالمية" },
-                { fr: "L'entrée de nouveaux pays (comme l'Espagne et l'Angleterre) dans la coalition militaire contre la France", ar: "دخول دول جديدة (كإسبانيا وإنجلترا) في التحالف العسكري ضد فرنسا" }, 
-                { fr: "L'indifférence des autres monarques européens", ar: "لامبالاة الملوك الأوروبيين الآخرين" }
+                { fr: "Elle a prouvé aux autres rois que la Révolution était inoffensive.", ar: "أثبتت للملوك الآخرين أن الثورة غير مؤذية." },
+                { fr: "Elle a terrifié l'Europe, entraînant l'entrée de l'Angleterre et de l'Espagne dans une vaste coalition militaire contre la République.", ar: "أرعبت أوروبا، مما أدى لدخول إنجلترا وإسبانيا في تحالف عسكري واسع ضد الجمهورية." }, 
+                { fr: "Elle a mis fin immédiatement à toutes les révoltes internes en France.", ar: "أنهت فوراً جميع الثورات الداخلية في فرنسا." }
             ], 
             answer: 1, 
-            exp_fr: "L'exécution de 'Louis Capet' a terrifié l'Europe monarchique, qui a répliqué par une guerre totale.",
-            exp_ar: "اعتبر ملوك أوروبا إعدام الملك إعلاناً للحرب، فاتحدوا جميعاً لسحق الثورة الفرنسية."
+            exp_fr: "Explication : Tuer un monarque de droit divin a été vu comme un défi inacceptable par les autres cours européennes, qui se sont unies (Première Coalition).",
+            exp_ar: "الشرح: الإعدام كان بمثابة 'إعلان حرب' على كل ملوك أوروبا الذين خافوا من انتقال عدوى الثورة لبلدانهم، فتحالفوا لإبادة فرنسا."
         },
         { 
-            icon: "🗺️",
-            q_fr: "Que montre la carte 'La France en danger (1793)' ?", 
-            q_ar: "ماذا تُظهر خريطة 'فرنسا في خطر (1793)'؟",
+            q_fr: "En analysant la carte 'La France en danger (1793)', quel est le drame stratégique de la République ?", 
+            q_ar: "بتحليل خريطة 'فرنسا في خطر (1793)'، ما هي المأساة الاستراتيجية للجمهورية؟",
             options: [
-                { fr: "Une période de grande prospérité économique", ar: "فترة ازدهار اقتصادي كبير" },
-                { fr: "Le double péril : les invasions étrangères et les contre-révolutions intérieures (ex: la Vendée)", ar: "الخطر المزدوج: الغزوات الأجنبية والثورات المضادة الداخلية (مثل الفونديه)" }, 
-                { fr: "L'expansion pacifique de la France", ar: "التوسع السلمي لفرنسا" }
+                { fr: "Elle manque de ressources navales pour envahir l'Amérique.", ar: "تفتقر للموارد البحرية لغزو أمريكا." },
+                { fr: "Elle est prise en tenaille : invasion extérieure par la Coalition aux frontières, et violentes guerres civiles (comme en Vendée) à l'intérieur.", ar: "عاشت كماشة الموت: غزو خارجي من التحالف على الحدود، وحروب أهلية عنيفة (كالفونديه) في الداخل." }, 
+                { fr: "Une grave épidémie de peste a décimé son armée.", ar: "وباء طاعون خطير قضى على جيشها." }
             ], 
             answer: 1, 
-            exp_fr: "Assiégée de l'extérieur et déchirée à l'intérieur (Guerre de Vendée), la République devait prendre des mesures extrêmes.",
-            exp_ar: "هذا الخطر الوجودي هو ما برر للحكومة إعلان حالة الطوارئ القصوى."
+            exp_fr: "Explication : Ce double péril mortel a justifié politiquement la mise en place de la Terreur et la centralisation du pouvoir.",
+            exp_ar: "الشرح: هذه الخريطة تبرر كل مجازر 'حكومة الإرهاب'. الجمهورية كانت مهددة بالفناء من أعداء الخارج (الجيوش الأوروبية) وأعداء الداخل (المتمردين المؤيدين للكنيسة والملك)."
         },
         { 
-            icon: "👁️",
-            q_fr: "Quel était le rôle de Robespierre et du Comité de salut public ?", 
-            q_ar: "ما كان دور روبسبير ولجنة السلامة العامة؟",
+            q_fr: "Quel était le rôle paradoxal du 'Comité de salut public' dirigé par Robespierre ?", 
+            q_ar: "ما هو الدور المتناقض لـ 'لجنة السلامة العامة' بقيادة روبسبير؟",
             options: [
-                { fr: "Négocier la paix avec l'Autriche", ar: "التفاوض على السلام مع النمسا" },
-                { fr: "Instaurer la Terreur pour sauver la Révolution par des décisions expéditives", ar: "إرساء عهد الإرهاب لإنقاذ الثورة عبر قرارات سريعة وصارمة" }, 
-                { fr: "Rédiger des poèmes révolutionnaires", ar: "كتابة قصائد ثورية" }
+                { fr: "Promouvoir la liberté d'expression totale tout en censurant la presse.", ar: "تعزيز حرية التعبير التامة مع فرض رقابة على الصحافة." },
+                { fr: "Instaurer une dictature sanglante et suspendre les droits de l'homme... prétendument pour sauver la Révolution et ses idéaux.", ar: "إرساء دكتاتورية دموية وتعليق حقوق الإنسان... بزعم إنقاذ الثورة ومثلها العليا." }, 
+                { fr: "Restaurer secrètement le pouvoir des nobles dans les provinces.", ar: "الاستعادة السرية لسلطة النبلاء في المقاطعات." }
             ], 
             answer: 1, 
-            exp_fr: "Dirigé par 12 députés dont Robespierre, le Comité a centralisé le pouvoir et appliqué une justice expéditive.",
-            exp_ar: "لتسريع اتخاذ القرارات وحماية الثورة، تم تأسيس هذه اللجنة التي مارست حكماً ديكتاتورياً دموياً."
+            exp_fr: "Explication : Robespierre pensait que la vertu sans la terreur était impuissante. Ils ont rogné sur la séparation des pouvoirs pour être expéditifs.",
+            exp_ar: "الشرح: التناقض هو أن لجنة صُممت لحماية 'الحرية والمساواة' اضطرت لممارسة دكتاتورية وإلغاء القانون لتنفيذ إعدامات سريعة ضد أعداء الثورة."
         },
         { 
-            icon: "⚔️",
-            q_fr: "Qu'est-ce que la 'Guillotine sous la Terreur' représente ?", 
-            q_ar: "ماذا تمثل 'المقصلة في عهد الإرهاب'؟",
+            q_fr: "La 'Guillotine sous la Terreur' n'était pas seulement un instrument de mort, c'était aussi :", 
+            q_ar: "'المقصلة في عهد الإرهاب' لم تكن مجرد أداة موت، بل كانت أيضاً:",
             options: [
-                { fr: "Un outil d'exécution intensive utilisé par le Tribunal révolutionnaire contre les 'suspects'", ar: "أداة إعدام مكثفة استخدمتها المحكمة الثورية ضد 'المشتبه بهم'" },
-                { fr: "Une machine agricole inventée par la Révolution", ar: "آلة زراعية اخترعتها الثورة" }, 
-                { fr: "Le symbole de la clémence de l'État", ar: "رمز لعفو الدولة" }
+                { fr: "Un outil politique de justice expéditive utilisé pour terroriser la société et éliminer rapidement toute opposition (loi des suspects).", ar: "أداة سياسية للعدالة السريعة استُخدمت لإرهاب المجتمع والتصفية السريعة لأي معارضة (قانون المشتبه بهم)." },
+                { fr: "Une machine réservée exclusivement à l'exécution de la famille royale.", ar: "آلة مخصصة حصرياً لإعدام العائلة الملكية." }, 
+                { fr: "Un moyen d'intimidation utilisé par l'Église catholique.", ar: "وسيلة ترهيب استخدمتها الكنيسة الكاثوليكية." }
             ], 
             answer: 0, 
-            exp_fr: "Des dizaines de milliers de personnes ont été exécutées publiquement pour imposer l'ordre par la peur.",
-            exp_ar: "كانت الوسيلة الأساسية لتطبيق 'العدالة الثورية' السريعة ونشر الرعب للسيطرة على البلاد."
+            exp_fr: "Explication : La Terreur s'appuyait sur le Tribunal révolutionnaire pour expédier les jugements sans avocats et avec des preuves minimes.",
+            exp_ar: "الشرح: المقصلة أصبحت رمزاً للحكم بالرعب. لم تكن تفرق بين نبيل أو فقير، أي شخص يُشتبه بتعاطفه مع الملكية كان يُعدم في الساحات العامة."
         },
         { 
-            icon: "🥁",
-            q_fr: "Quel a été le mécanisme inédit de la 'Levée en masse' (300 000 hommes) ?", 
-            q_ar: "ما هي الآلية غير المسبوقة في 'التجنيد العام' (300 ألف رجل)؟",
+            q_fr: "La 'Levée en masse' (1793) introduit une innovation militaire radicale. Laquelle ?", 
+            q_ar: "أدخل 'التجنيد العام' (1793) ابتكاراً عسكرياً جذرياً. ما هو؟",
             options: [
-                { fr: "L'utilisation de mercenaires étrangers", ar: "استخدام مرتزقة أجانب" },
-                { fr: "Pour la première fois, les soldats ont été tirés au sort parmi les citoyens", ar: "لأول مرة، تم اختيار الجنود عن طريق 'القرعة' من بين المواطنين" }, 
-                { fr: "Seuls les nobles pouvaient combattre", ar: "سمح للنبلاء فقط بالقتال" }
+                { fr: "L'utilisation de ballons d'observation dans toutes les batailles.", ar: "استخدام مناطيد المراقبة في جميع المعارك." },
+                { fr: "L'abandon des mercenaires au profit d'une armée nationale géante où 300 000 citoyens sont tirés au sort pour défendre la Patrie.", ar: "التخلي عن المرتزقة لصالح جيش وطني عملاق حيث يتم سحب 300 ألف مواطن بالقرعة للدفاع عن الوطن." }, 
+                { fr: "L'armement exclusif des esclaves libérés.", ar: "التسليح الحصري للعبيد المحررين." }
             ], 
             answer: 1, 
-            exp_fr: "Cette décision a sauvé la République militairement, mais a provoqué la colère et des révoltes paysannes.",
-            exp_ar: "ساهمت في بناء جيش وطني قوي، لكن فكرة الإجبار والقرعة أغضبت الفلاحين وأشعلت التمرد."
+            exp_fr: "Explication : C'est la naissance de l'armée de conscription. Mais le 'tirage au sort' a provoqué des émeutes paysannes massives.",
+            exp_ar: "الشرح: ولادة 'الجيش الوطني الشعبي'. لم يعد الجيش ملكاً للملك، بل للمواطنين. لكن إجبار الفلاحين على القتال تسبب في اندلاع تمرد داخلي خطير."
         },
         { 
-            icon: "📉",
-            q_fr: "Pourquoi le coup d'État du 9 Thermidor (Chute de Robespierre) a-t-il eu lieu ?", 
-            q_ar: "لماذا وقع انقلاب 9 تيرميدور (سقوط روبسبير)؟",
+            q_fr: "Quelle est la véritable cause du Coup d'État du 9 Thermidor (Chute de Robespierre en 1794) ?", 
+            q_ar: "ما هو السبب الحقيقي لانقلاب 9 تيرميدور (سقوط روبسبير عام 1794)؟",
             options: [
-                { fr: "Parce qu'il voulait restaurer la monarchie", ar: "لأنه أراد استعادة الملكية" },
-                { fr: "Les purges répétées ont effrayé les députés de la Convention, qui l'ont arrêté pour sauver leur vie", ar: "عمليات التطهير المتكررة أرعبت النواب، فاعتقلوه لإنقاذ حياتهم" }, 
-                { fr: "Parce qu'il a perdu une bataille militaire", ar: "لأنه خسر معركة عسكرية" }
+                { fr: "Une intervention militaire britannique directe à Paris.", ar: "تدخل عسكري بريطاني مباشر في باريس." },
+                { fr: "La paranoïa : les députés de la Convention, craignant d'être les prochains sur la liste des guillotinés, se coalisent pour l'abattre.", ar: "جنون الارتياب (البارانويا): نواب المؤتمر الوطني، خوفاً من أن يكونوا التالين في قائمة المقصلة، اتحدوا لإسقاطه." }, 
+                { fr: "Robespierre avait secrètement détourné l'argent du trésor.", ar: "روبسبير اختلس أموال الخزانة سراً." }
             ], 
             answer: 1, 
-            exp_fr: "Robespierre intensifiait la Terreur même quand les menaces reculaient. Son exécution (juillet 1794) marque la fin de la Terreur.",
-            exp_ar: "خاف النواب أن يصلهم دور المقصلة (كما حدث لدانتون)، فبادروا بإسقاطه، مما أنهى المرحلة الراديكالية."
+            exp_fr: "Explication : Robespierre avait intensifié la Terreur même après les victoires militaires. Ses propres alliés ont pris peur et l'ont fait arrêter.",
+            exp_ar: "الشرح: إعدامات روبسبير طالت حتى أصدقاءه الثوار المعتدلين (مثل دانتون). النواب أدركوا أنه إذا لم يقتلوا روبسبير، فسيقتلهم هو، فنفذوا الانقلاب."
         },
         { 
-            icon: "🏛️",
-            q_fr: "Quel était le principe du schéma de la 'Constitution du Directoire' (1795) ?", 
-            q_ar: "ما هو المبدأ الأساسي لمخطط 'دستور حكومة الإدارة' (1795)؟",
+            q_fr: "Le schéma de la 'Constitution du Directoire' (1795) montre un exécutif confié à 5 Directeurs. Quel traumatisme a inspiré ce choix ?", 
+            q_ar: "يظهر مخطط 'دستور حكومة الإدارة' (1795) سلطة تنفيذية مسندة لـ 5 مديرين. ما هي الصدمة التي ألهمت هذا الخيار؟",
             options: [
-                { fr: "Donner tout le pouvoir à un seul homme", ar: "إعطاء كل السلطة لرجل واحد" }, 
-                { fr: "Cloisonner les pouvoirs avec 5 directeurs pour empêcher toute dérive dictatoriale", ar: "فصل السلطات عبر 5 مديرين لمنع أي انزلاق ديكتاتوري" }, 
-                { fr: "Créer un régime purement communiste", ar: "إنشاء نظام شيوعي بحت" }
+                { fr: "Le désir de copier exactement le modèle gouvernemental ottoman.", ar: "الرغبة في النسخ الحرفي لنموذج الحكومة العثماني." }, 
+                { fr: "La peur absolue de la dictature d'un seul homme (traumatisme de Robespierre et de Louis XVI), poussant à émietter le pouvoir au risque de le rendre faible.", ar: "الخوف المطلق من دكتاتورية الرجل الواحد (عقدة روبسبير ولويس 16)، مما دفع لتفتيت السلطة حتى وإن أصبحت ضعيفة." }, 
+                { fr: "L'obligation imposée par un traité de paix avec la Prusse.", ar: "التزام فُرض بموجب معاهدة سلام مع بروسيا." }
             ], 
             answer: 1, 
-            exp_fr: "Traumatisés par Robespierre, les auteurs du Directoire ont créé un pouvoir exécutif divisé (mais qui s'avérera faible et instable).",
-            exp_ar: "لتجنب استبداد فردي جديد، تم تفتيت السلطة التنفيذية، لكن هذا الضعف هو ما مهد لاحقاً لانقلاب نابليون."
+            exp_fr: "Explication : Le Directoire voulait éviter à la fois la tyrannie royale et la tyrannie jacobine. Ce système trop cloisonné favorisera la corruption et le coup d'État de Bonarparte.",
+            exp_ar: "الشرح: صاغوا الدستور بعقلية 'الخوف من الاستبداد'، فقسّموا السلطة ليراقب المدراء بعضهم. هذه الحكومة الضعيفة هي ما مهدت لصعود القائد العسكري القوي: نابليون بونابرت."
         }
     ];
 
@@ -554,14 +568,12 @@
         document.getElementById("q-current").innerText = currentQuestionIndex + 1;
         document.getElementById("score").innerText = score;
         
-        document.getElementById("q-icon").innerText = q.icon;
         document.getElementById("q-fr").innerText = q.q_fr;
         document.getElementById("q-ar").innerText = q.q_ar;
         
         const optionsDiv = document.getElementById("options-container");
         optionsDiv.innerHTML = "";
         
-        document.getElementById("feedback").innerText = "";
         document.getElementById("explanation").classList.add("hidden");
         document.getElementById("next-btn").classList.add("hidden");
 
@@ -585,13 +597,11 @@
 
         if (selectedIndex === q.answer) {
             btnElement.classList.add("correct");
-            document.getElementById("feedback").innerHTML = "<span style='color:var(--success)'>Excellent ! ✅ إجابة صحيحة</span>";
             score++;
             document.getElementById("score").innerText = score;
         } else {
             btnElement.classList.add("wrong");
             buttons[q.answer].classList.add("correct");
-            document.getElementById("feedback").innerHTML = "<span style='color:var(--error)'>Erreur ❌ خطأ</span>";
         }
         
         document.getElementById("exp-fr").innerText = q.exp_fr;
@@ -614,20 +624,20 @@
             let advice = "";
             
             if(percentage === 100) {
-                msg = "Parfait ! 🌟";
-                advice = "أنت مستعد تماماً للامتحان! دمجك بين الأحداث التاريخية وفهمك العميق للأسباب والنتائج ممتاز جداً.";
+                msg = "Félicitations ! 20/20 🏆";
+                advice = "عمل مثالي! أنت جاهز تماماً لتقديم مشروعك المدرسي. تحليلك للأحداث التاريخية وربطك بين الأسباب والنتائج ينم عن فهم عميق جداً سيثير إعجاب أستاذك.";
             } else if(percentage >= 75) {
-                msg = "Très Bien ! 👏";
-                advice = "مستوى ممتاز! لقد ألممت بأغلب التفاصيل التاريخية التي ذكرها الأستاذ في الفيديو. راجع فقط النقاط البسيطة التي أخطأت فيها.";
+                msg = "Très Bon Travail ! 👏";
+                advice = "مشروع ممتاز! معلوماتك قوية جداً. بضع مراجعات بسيطة للخِدَع التاريخية (Distractors) وستضمن العلامة الكاملة بكل تأكيد.";
             } else if(percentage >= 50) {
-                msg = "Bien, mais attention ! 🤔";
-                advice = "فهمك العام جيد، لكن امتحانات التاريخ تتطلب دقة في التفاصيل (مثل تواريخ الأحداث المفصلية وأسبابها). أنصحك بإعادة المحاولة.";
+                msg = "Bien, mais on peut faire mieux ! 📖";
+                advice = "أنت في الطريق الصحيح. انتبه لبعض التفاصيل التاريخية الدقيقة، خاصة دوافع الثوار ونتائج القوانين. أعد قراءة 'الشرح المرفق' تحت كل سؤال لتقوية حجتك.";
             } else {
-                msg = "Il faut réviser 📚";
-                advice = "يبدو أنك بحاجة لقراءة الملخص بتركيز أكبر قبل إجراء الاختبار المفتوح. لا تقلق، استخدم البطاقات التعليمية السابقة للحفظ.";
+                msg = "Une révision s'impose ! ⏳";
+                advice = "الأسئلة مصممة لتكون بمستوى تحليلي عالٍ لمشروع مدرسي متميز. خذ وقتك في قراءة الملخص الأكاديمي السابق وأعد المحاولة، الفهم خير من الحفظ!";
             }
             
-            document.getElementById("final-msg").innerText = `Score : ${score} / ${currentQuestions.length} | ${msg}`;
+            document.getElementById("final-msg").innerText = `Votre Score : ${score} / ${currentQuestions.length} | ${msg}`;
             document.getElementById("advice-msg").innerText = advice;
         }
     }
